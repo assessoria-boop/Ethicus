@@ -1,4 +1,4 @@
-# Ethicus · Hospital Veterinário 24h (Landing Page)
+﻿# Ethicus · Hospital Veterinário 24h (Landing Page)
 
 Landing page estática (HTML único, sem dependências externas) para o Ethicus Hospital Veterinário 24h · São Caetano do Sul/SP.
 
@@ -23,7 +23,7 @@ adicione ou remova `<img>` dentro de `.clinica-galeria` (a primeira precisa ter 
 
 ## Configurações já aplicadas
 
-- WhatsApp: `+55 11 99912-7112` (número nunca aparece na tela, só nos botões)
+- WhatsApp: `+55 11 97445-5545` (número nunca aparece na tela, só nos botões)
 - Mensagem automática: `Olá encontrei vocês pelo Google, gostaria de atendimento.`
 - Google Tag Manager: `GTM-W6VC3VMZ` (carregamento adiado até a 1ª interação ou 3,5s)
 - Mapa: Street View da Estrada das Lágrimas, 1843 · Bairro Mauá
