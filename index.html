@@ -8,8 +8,8 @@
   <link rel="icon" type="image/webp" href="logo.webp" />
   <link rel="apple-touch-icon" href="logo.webp" />
   <link rel="preload" as="image" href="logo.webp" fetchpriority="high" type="image/webp" />
-  <link rel="preload" as="image" href="bg.desk.webp" type="image/webp" media="(min-width: 901px)" />
-  <link rel="preload" as="image" href="bg.mobile.webp" type="image/webp" media="(max-width: 900px)" />
+  <link rel="preload" as="image" href="bg.desk.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="bg.mobile.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
@@ -655,7 +655,7 @@
     .info-linha .ico { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
     .info-linha strong { color: var(--texto); display: block; }
 
-    .mapa { border-radius: 24px; overflow: hidden; height: 340px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+    .mapa { border-radius: 24px; overflow: hidden; height: 340px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); background: var(--creme); }
     .mapa iframe { width: 100%; height: 100%; border: none; display: block; }
 
     /* FOOTER */
@@ -875,27 +875,27 @@
       <div class="carrossel-track" id="carrosselTrack">
         <div class="carrossel-slide">
           <div class="review-img-card">
-            <img src="1.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" />
+            <img src="1.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" width="501" height="635" />
           </div>
         </div>
         <div class="carrossel-slide">
           <div class="review-img-card">
-            <img src="2.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" />
+            <img src="2.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" width="501" height="635" />
           </div>
         </div>
         <div class="carrossel-slide">
           <div class="review-img-card">
-            <img src="3.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" />
+            <img src="3.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" width="501" height="635" />
           </div>
         </div>
         <div class="carrossel-slide">
           <div class="review-img-card">
-            <img src="4.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" />
+            <img src="4.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" width="501" height="635" />
           </div>
         </div>
         <div class="carrossel-slide">
           <div class="review-img-card">
-            <img src="5.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" />
+            <img src="5.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" width="501" height="635" />
           </div>
         </div>
       </div>
@@ -1058,7 +1058,7 @@
       </a>
     </div>
     <div class="mapa">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.838248305851!2d-46.574984400000005!3d-23.645963100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce434a1737c179%3A0x99367801cbc022e4!2sEthicus%20Hospital%20Veterin%C3%A1rio%2024%20Horas%20%7C%20S%C3%A3o%20Caetano%20do%20Sul!5e0!3m2!1spt-BR!2sbr!4v1786016270505!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Localização Ethicus Hospital Veterinário 24h"></iframe>
+      <iframe data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.838248305851!2d-46.574984400000005!3d-23.645963100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce434a1737c179%3A0x99367801cbc022e4!2sEthicus%20Hospital%20Veterin%C3%A1rio%2024%20Horas%20%7C%20S%C3%A3o%20Caetano%20do%20Sul!5e0!3m2!1spt-BR!2sbr!4v1786016270505!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Localização Ethicus Hospital Veterinário 24h"></iframe>
     </div>
   </div>
 </div>
@@ -1123,6 +1123,23 @@
 
   setInterval(function() { moverCarrossel(1); }, 5000);
   window.addEventListener('resize', atualizarCarrossel);
+
+  /* Mapa: só carrega quando o usuário chega perto dele */
+  var mapaIframe = document.querySelector('.mapa iframe[data-src]');
+  if (mapaIframe) {
+    var carregarMapa = function() {
+      if (mapaIframe.src) return;
+      mapaIframe.src = mapaIframe.getAttribute('data-src');
+    };
+    if ('IntersectionObserver' in window) {
+      var mapaObs = new IntersectionObserver(function(entradas) {
+        if (entradas[0].isIntersecting) { carregarMapa(); mapaObs.disconnect(); }
+      }, { rootMargin: '400px' });
+      mapaObs.observe(mapaIframe);
+    } else {
+      window.addEventListener('load', carregarMapa);
+    }
+  }
 
   /* Galeria da clínica com fade (ignora imagens ainda não enviadas) */
   var galeria = document.querySelector('.clinica-galeria');
