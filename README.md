@@ -11,6 +11,8 @@ Todas em **.webp** (nomes exatos, tudo minúsculo):
 | `logo.webp` | Logo do cliente (usada no cabeçalho, no hero e como favicon) | quadrada, 512x512, fundo creme ou transparente |
 | `1.webp` … `5.webp` | Prints reais das avaliações do Google (carrossel de depoimentos) | largura ~800px, altura livre |
 | `clinica1.webp` … `clinica4.webp` | Fotos da clínica (galeria com fade automático) | proporção 4:3, ~1200x900px |
+| `bg.desk.webp` | Fundo do hero no desktop (≥901px) | 1536x1024, pets à direita e área livre à esquerda |
+| `bg.mobile.webp` | Fundo do hero no mobile (≤900px) | 1080x2100, topo ~45% livre para o texto e pets embaixo |
 
 Quer mais ou menos prints de avaliação? Basta duplicar/remover um bloco `.carrossel-slide`
 e o `.carrossel-dot` correspondente em `index.html`. O mesmo vale para as fotos da clínica:

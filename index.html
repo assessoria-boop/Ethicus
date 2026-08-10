@@ -8,6 +8,8 @@
   <link rel="icon" type="image/webp" href="logo.webp" />
   <link rel="apple-touch-icon" href="logo.webp" />
   <link rel="preload" as="image" href="logo.webp" fetchpriority="high" type="image/webp" />
+  <link rel="preload" as="image" href="bg.desk.webp" type="image/webp" media="(min-width: 901px)" />
+  <link rel="preload" as="image" href="bg.mobile.webp" type="image/webp" media="(max-width: 900px)" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
@@ -178,7 +180,7 @@
     }
 
     .hero-logo {
-      width: 132px; height: 132px;
+      width: 108px; height: 108px;
       border-radius: 50%;
       overflow: hidden;
       margin-bottom: 20px;
@@ -203,7 +205,7 @@
     }
 
     .hero h1 {
-      font-size: 50px;
+      font-size: 46px;
       font-weight: 900;
       color: var(--texto);
       letter-spacing: -1.5px;
@@ -215,17 +217,15 @@
     .br-mob { display: none; }
 
     .hero h1 .h1-destaque {
-      background: var(--gradiente-destaque);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: var(--laranja);
     }
 
     .hero-rating {
-      font-size: 13.5px;
+      font-size: 18px;
       font-weight: 600;
+      line-height: 1.4;
       color: var(--cinza);
-      margin-bottom: 22px;
+      margin-bottom: 40px;
     }
 
     .hero-btns {
@@ -293,7 +293,7 @@
 
     /* DEPOIMENTOS */
     .sec-depoi {
-      background: white;
+      background: var(--cinza-claro);
       padding: 88px 0;
       border-bottom: 1px solid var(--borda);
     }
@@ -383,6 +383,7 @@
     .depoi-imagens .carrossel-wrap { margin-top: 0; }
 
     .depoi-titulo { font-size: 32px; margin-bottom: 14px; }
+    .depoi-btn { max-width: 320px; margin-top: 10px; }
     .depoi-sub {
       font-size: 15px;
       color: var(--cinza);
@@ -483,6 +484,10 @@
       margin-bottom: 40px;
     }
 
+    .sec-header { text-align: center; }
+    .sec-header .sec-titulo { max-width: 780px; margin-left: auto; margin-right: auto; }
+    .sec-header .sec-sub { margin-left: auto; margin-right: auto; }
+
     /* SERVIÇOS */
     .servicos-grid {
       display: grid;
@@ -540,6 +545,8 @@
       align-items: center;
     }
 
+    .porque-intro .sec-titulo { margin-bottom: 0; }
+
     .clinica-galeria {
       position: relative;
       width: 100%;
@@ -549,7 +556,7 @@
       overflow: hidden;
       box-shadow: 0 12px 40px rgba(14,32,25,0.16);
       background: var(--creme);
-      margin: 0 auto;
+      margin: 28px 0 0;
     }
     .clinica-galeria img {
       position: absolute;
@@ -690,15 +697,47 @@
     .wpp-float:hover { transform: scale(1.1); }
     .wpp-float svg { width: 28px; height: 28px; fill: white; }
 
+    /* HERO DESKTOP com imagem de fundo */
+    @media (min-width: 901px) {
+      .hero {
+        background:
+          linear-gradient(to right, rgba(251,241,232,0.95) 0%, rgba(251,241,232,0.80) 34%, rgba(251,241,232,0) 60%),
+          url('bg.desk.webp') 100% 15% / cover no-repeat;
+        text-align: left;
+        padding: 48px 48px 44px;
+      }
+      .hero-content {
+        max-width: 1100px;
+        align-items: flex-start;
+      }
+      .hero-content > * { max-width: 520px; }
+      .hero h1 { max-width: 620px; }
+    }
+
+    /* desktop mais estreito: reduz a headline para caber em 2 linhas */
+    @media (min-width: 901px) and (max-width: 1200px) {
+      .hero h1 { font-size: 40px; }
+    }
+
     /* RESPONSIVO */
     @media (max-width: 900px) {
       nav { padding: 12px 20px; }
       nav .nav-nome, nav .nav-badge { display: none; }
 
-      .hero { min-height: calc(100svh - 96px); padding: 36px 20px 36px; }
-      .hero h1 { font-size: 36px; letter-spacing: -1px; }
+      .hero {
+        min-height: calc(100svh - 96px);
+        padding: 36px 20px 36px;
+        align-items: flex-start;
+        background-color: var(--creme);
+        background-image: url('bg.mobile.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center -40px;
+      }
+      .hero h1 { font-size: 38px; letter-spacing: -1px; margin-bottom: 14px; }
       .br-mob { display: inline; }
-      .hero-logo { width: 108px; height: 108px; margin-bottom: 16px; }
+      .hero-logo, .hero-clinica-nome { display: none; }
+      .hero-rating { font-size: 16px; margin-bottom: 28px; }
       .hero-btns { max-width: 100%; }
 
       .stats { padding: 0 20px; }
@@ -718,6 +757,7 @@
       .depoi-imagens { order: 0; }
       .depoi-conteudo { order: 1; text-align: center; margin-top: 4px; }
       .depoi-titulo { text-align: center; }
+      .depoi-btn { margin-left: auto; margin-right: auto; }
       .depoi-sub { margin-left: auto; margin-right: auto; }
       .depoi-stat-card { max-width: 440px; margin-left: auto; margin-right: auto; text-align: left; }
       .depoi-verificado { justify-content: center; }
@@ -732,7 +772,7 @@
       .servico-icone { margin-left: auto; margin-right: auto; }
 
       .sec-porque { grid-template-columns: 1fr; gap: 40px; padding: 56px 20px; text-align: center; }
-      .clinica-galeria { max-width: 440px; }
+      .clinica-galeria { max-width: 440px; margin: 24px auto 0; }
       .motivos { align-items: center; }
       .motivo { text-align: left; max-width: 440px; width: 100%; }
 
@@ -752,7 +792,7 @@
     }
 
     @media (max-width: 420px) {
-      .hero h1 { font-size: 31px; }
+      .hero h1 { font-size: 35px; }
     }
   </style>
 </head>
@@ -786,20 +826,20 @@
 <div class="hero">
   <div class="hero-content">
     <div class="hero-logo">
-      <img src="logo.webp" alt="Ethicus Hospital Veterinário 24h" decoding="async" loading="eager" width="132" height="132" />
+      <img src="logo.webp" alt="Ethicus Hospital Veterinário 24h" decoding="async" loading="eager" width="108" height="108" />
     </div>
     <p class="hero-clinica-nome">Ethicus</p>
     <h1>
-      <span class="h1-destaque">Hospital Veterinário</span><br />
-      24h em São Caetano
+      <span class="h1-destaque">Hospital<br class="br-mob" /> Veterinário 24h</span><br />
+      em São Caetano
     </h1>
-    <p class="hero-rating">Aberto 24 horas, todos os dias. Fale agora com a nossa equipe!</p>
+    <p class="hero-rating">A saúde do seu pet é nossa prioridade!</p>
     <div class="hero-btns">
       <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="btn-wpp">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Atendimento Imediato
       </a>
-      <p class="hero-resposta">⚡ Resposta em 2 minutos</p>
+      <p class="hero-resposta">Clique no botão acima ⚡ Resposta em 2 minutos</p>
     </div>
   </div>
 </div>
@@ -812,8 +852,8 @@
       <div class="stat-label">Aberto todos os dias</div>
     </div>
     <div class="stat">
-      <div class="stat-num" style="font-size:18px;letter-spacing:0;">Referência</div>
-      <div class="stat-label">Na região</div>
+      <div class="stat-num" style="font-size:18px;letter-spacing:0;">Amor e Cuidado</div>
+      <div class="stat-label">Tratamos seu pet com carinho e respeito como ele merece.</div>
     </div>
     <div class="stat">
       <div class="stat-num">+30 anos</div>
@@ -875,7 +915,11 @@
 
     <div class="depoi-conteudo">
       <span class="sec-tag">Depoimentos reais</span>
-      <h2 class="sec-titulo depoi-titulo">São Caetano confia <span>no Ethicus.</span></h2>
+      <h2 class="sec-titulo depoi-titulo">São Caetano confia<br /> <span>no Ethicus.</span></h2>
+      <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="btn-wpp depoi-btn">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Atendimento Imediato
+      </a>
     </div>
    </div>
   </div>
@@ -883,9 +927,11 @@
 
 <!-- SERVIÇOS -->
 <div class="sec">
-  <span class="sec-tag">O que fazemos</span>
-  <h2 class="sec-titulo">Atendimento rápido e especializado, <span>a qualquer hora do dia ou da noite</span></h2>
-  <p class="sec-sub">A equipe Ethicus está pronta para cuidar do seu companheiro com técnica avançada e estrutura completa.</p>
+  <div class="sec-header">
+    <span class="sec-tag">O que fazemos</span>
+    <h2 class="sec-titulo">Atendimento rápido e especializado,<br /> <span>a qualquer hora do dia ou da noite</span></h2>
+    <p class="sec-sub">A equipe Ethicus está pronta para cuidar do seu companheiro com técnica avançada e estrutura completa.</p>
+  </div>
   <div class="servicos-grid">
     <div class="servico-card">
       <div class="servico-icone">
@@ -927,15 +973,17 @@
 <!-- POR QUE -->
 <div style="background:var(--cinza-claro); padding: 1px 0;">
   <div class="sec-porque">
-    <div class="clinica-galeria">
-      <img src="clinica1.webp" class="ativo" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-      <img src="clinica2.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-      <img src="clinica3.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-      <img src="clinica4.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-    </div>
-    <div>
+    <div class="porque-intro">
       <span class="sec-tag">Por que São Caetano confia no Ethicus?</span>
       <h2 class="sec-titulo" style="font-size:32px;">Cuidado que<br class="br-mob" /> <span>não para.</span></h2>
+      <div class="clinica-galeria">
+        <img src="clinica1.webp" class="ativo" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
+        <img src="clinica2.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
+        <img src="clinica3.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
+        <img src="clinica4.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
+      </div>
+    </div>
+    <div>
       <div class="motivos">
         <div class="motivo">
           <div class="motivo-num">01</div>
@@ -958,6 +1006,13 @@
             <p>Cuidado carinhoso e responsável focado no bem-estar do seu animal.</p>
           </div>
         </div>
+        <div class="motivo">
+          <div class="motivo-num">04</div>
+          <div>
+            <h4>+30 anos de experiência</h4>
+            <p>Mais de 80 mil pets atendidos ao longo da nossa história em São Caetano.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -966,7 +1021,7 @@
 <!-- CTA -->
 <div class="sec-cta-wrap">
   <div class="sec-cta">
-    <h2>Hospital Veterinário 24h em São Caetano do Sul. <span>O Ethicus está esperando por você.</span></h2>
+    <h2>Ethicus Hospital Veterinário<br /> <span>24h em São Caetano do Sul.</span></h2>
     <p class="sec-cta-texto">Qualquer hora do dia ou da madrugada, nossa equipe está de prontidão para atender com agilidade e dedicação. Fale com a gente agora ou venha até nós.</p>
     <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="btn-wpp" style="max-width:420px;margin:0 auto;">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1075,11 +1130,7 @@
 
   function iniciarGaleria() {
     var imgs = galeria.querySelectorAll('img');
-    if (!imgs.length) {
-      galeria.style.display = 'none';
-      galeria.parentElement.style.gridTemplateColumns = '1fr';
-      return;
-    }
+    if (!imgs.length) { galeria.style.display = 'none'; return; }
     imgs[0].classList.add('ativo');
     if (imgs.length < 2) return;
     setInterval(function() {
