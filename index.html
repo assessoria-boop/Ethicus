@@ -29,7 +29,8 @@
       --creme: #FBF1E8;            /* fundo da logo */
       --prata: #7A8A80;
       --gradiente: linear-gradient(135deg, #0E2019 0%, #1F4433 55%, #2E6349 100%);
-      --gradiente-destaque: linear-gradient(90deg, #EF6C31 0%, #FFA86B 100%);
+      --gradiente-verde: linear-gradient(135deg, #4E9B72 0%, #2E6349 45%, #16352A 100%);
+      --gradiente-verde-claro: linear-gradient(135deg, #B6EFD1 0%, #7FD6A8 45%, #4FB482 100%);
       --verde-wpp: #25D366;
       --verde-wpp-hover: #1DA851;
       --texto: #12211A;
@@ -71,7 +72,7 @@
       font-size: 13px;
       font-weight: 500;
     }
-    .topo strong { color: var(--laranja-claro); }
+    .topo strong { color: #9FE3BE; }
 
     .topo-dot {
       display: inline-block;
@@ -88,55 +89,7 @@
       50%      { opacity: 0.4; }
     }
 
-    /* NAV */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 48px;
-      border-bottom: 1px solid var(--borda);
-      background: var(--branco);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-logo-circulo {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: var(--creme);
-    }
-
-    .nav-logo-circulo img {
-      width: 100%; height: 100%;
-      object-fit: contain;
-    }
-
-    .nav-nome {
-      font-size: 16px;
-      font-weight: 900;
-      color: var(--marca);
-      letter-spacing: -0.5px;
-    }
-
-    .nav-badge {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--branco);
-      background: var(--marca);
-      border-radius: 999px;
-      padding: 3px 10px;
-    }
-
+    /* botao compacto (rodape) */
     .nav-btn {
       display: inline-flex;
       align-items: center;
@@ -156,18 +109,41 @@
 
     /* HERO */
     .hero {
-      min-height: calc(100svh - 104px);
+      min-height: calc(100svh - 33px);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 48px 24px 44px;
+      padding: 0 0 72px;
       position: relative;
       overflow: hidden;
       background: var(--branco);
     }
 
+    /* faixa de imagem no rodape do hero, com a base curvada */
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      margin-bottom: 24px;
+      border-radius: 0 0 50% 50% / 0 0 80px 80px;
+      overflow: hidden;
+      background: var(--cinza-claro);
+      flex-shrink: 0;
+    }
+    .hero-banner picture { display: contents; }
+    .hero-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
     .hero-content {
+      padding: 0 24px;
+      margin: auto 0;
       position: relative;
       z-index: 2;
       max-width: 660px;
@@ -215,7 +191,10 @@
     .br-mob { display: none; }
 
     .hero h1 .h1-destaque {
-      color: var(--laranja);
+      background: var(--gradiente-verde);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-rating {
@@ -268,30 +247,45 @@
       padding: 28px 48px;
     }
 
-    .stats-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      align-items: stretch;
+    .stats-marquee {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+      mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    }
+
+    .stats-track {
+      display: flex;
+      width: max-content;
+      animation: statsPassando 40s linear infinite;
+    }
+    .stats-marquee:hover .stats-track { animation-play-state: paused; }
+
+    @keyframes statsPassando {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stats-track { animation: none; }
     }
 
     .stat {
+      flex: 0 0 auto;
+      min-width: 260px;
       text-align: center;
-      padding: 8px 16px;
+      padding: 8px 28px;
       border-right: 1px solid rgba(255,255,255,0.18);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
-    .stat:last-child { border-right: none; }
-    .stat-num   { font-size: 26px; font-weight: 900; color: var(--laranja-claro); letter-spacing: -1px; }
+    .stat-num   { font-size: 26px; font-weight: 900; color: var(--branco); letter-spacing: -1px; }
     .stat-label { font-size: 12px; color: rgba(255,255,255,0.78); margin-top: 4px; font-weight: 500; }
 
     /* DEPOIMENTOS */
     .sec-depoi {
-      background: var(--cinza-claro);
+      background: var(--branco);
       padding: 88px 0;
       border-bottom: 1px solid var(--borda);
     }
@@ -396,7 +390,12 @@
       margin-bottom: 14px;
     }
 
-    .sec-titulo span { color: var(--laranja); }
+    .sec-titulo span {
+      background: var(--gradiente-verde);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
     .sec-sub {
       font-size: 15px;
@@ -418,16 +417,16 @@
     }
 
     .servico-card {
-      background: var(--cinza-claro);
+      background: var(--branco);
+      border: 1px solid var(--borda);
       border-radius: 20px;
       padding: 26px 22px;
       transition: all 0.2s;
-      border: 1px solid transparent;
     }
 
     .servico-card:hover {
-      background: var(--creme);
-      border-color: #F0DCC8;
+      background: var(--verde-suave);
+      border-color: #C9E0D3;
       transform: translateY(-3px);
     }
 
@@ -443,7 +442,7 @@
 
     .servico-icone svg {
       width: 22px; height: 22px;
-      stroke: var(--laranja-claro);
+      stroke: var(--branco);
       fill: none;
       stroke-width: 1.8;
       stroke-linecap: round;
@@ -501,13 +500,13 @@
       transition: all 0.2s;
     }
 
-    .motivo:hover { background: var(--creme); border-color: #F0DCC8; }
+    .motivo:hover { background: var(--verde-suave); border-color: #C9E0D3; }
 
     .motivo-num {
       width: 36px; height: 36px;
       border-radius: 10px;
       background: var(--gradiente);
-      color: var(--laranja-claro);
+      color: var(--branco);
       font-size: 14px;
       font-weight: 800;
       display: flex;
@@ -538,7 +537,12 @@
       color: #ffffff;
     }
 
-    .sec-cta h2 span { color: var(--laranja-claro); }
+    .sec-cta h2 span {
+      background: var(--gradiente-verde-claro);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
     .sec-cta-texto {
       font-size: 15px;
@@ -548,7 +552,7 @@
     }
 
     /* LOCALIZAÇÃO */
-    .sec-local { background: var(--cinza-claro); padding: 88px 48px; }
+    .sec-local { background: #ECECEC; padding: 88px 48px; }
 
     .sec-local-inner {
       max-width: 1100px;
@@ -627,26 +631,23 @@
 
     /* RESPONSIVO */
     @media (max-width: 900px) {
-      nav { padding: 12px 20px; }
-      nav .nav-nome, nav .nav-badge { display: none; }
-
       .hero {
-        min-height: calc(100svh - 96px);
-        padding: 36px 20px 36px;
+        min-height: calc(100svh - 31px);
+        padding: 0 0 56px;
       }
+      .hero-content { padding: 0 20px; }
+      .hero-banner { height: 190px; margin-bottom: 18px; border-radius: 0 0 50% 50% / 0 0 42px 42px; }
       .hero h1 { font-size: 38px; letter-spacing: -1px; margin-bottom: 14px; }
       .br-mob { display: inline; }
+      .br-desk { display: none; }
       .hero-logo { width: 92px; height: 92px; margin-bottom: 14px; }
       .hero-rating { font-size: 16px; margin-bottom: 28px; }
       .hero-btns { max-width: 100%; }
 
-      .stats { padding: 0 20px; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .stat { padding: 20px 12px; border-right: 1px solid rgba(255,255,255,0.18); border-bottom: 1px solid rgba(255,255,255,0.18); }
-      .stat:nth-child(2) { border-right: none; }
-      .stat:nth-child(3) { border-bottom: none; }
-      .stat:nth-child(4) { border-right: none; border-bottom: none; }
-      .stat-num { font-size: 20px; }
+      .stats { padding: 22px 0; }
+      .stat { min-width: 210px; padding: 8px 20px; }
+      .stat-num { font-size: 22px; }
+      .stats-track { animation-duration: 26s; }
 
       .sec-depoi { padding: 56px 0; }
       .sec-depoi-inner { padding: 0 20px; text-align: center; }
@@ -697,23 +698,15 @@
   Atendimento Disponível <strong>Agora</strong>
 </div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">
-    <div class="nav-logo-circulo">
-      <img src="logo.webp" alt="Ethicus Hospital Veterinário 24h" loading="eager" decoding="async" width="42" height="42" />
-    </div>
-    <span class="nav-nome">Ethicus</span>
-    <span class="nav-badge">Hospital Veterinário 24h</span>
-  </div>
-  <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="nav-btn">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Entre em contato
-  </a>
-</nav>
-
 <!-- HERO -->
 <div class="hero">
+  <div class="hero-banner">
+    <picture>
+      <source media="(max-width: 900px)" srcset="bg-mobile.webp" type="image/webp" />
+      <img src="bg-desktop.webp" alt="Família deitada no chão de casa com o cachorro" decoding="async" loading="eager" width="2400" height="629" />
+    </picture>
+  </div>
+
   <div class="hero-content">
     <div class="hero-logo">
       <img src="logo.webp" alt="Ethicus Hospital Veterinário 24h" decoding="async" loading="eager" width="108" height="108" />
@@ -736,22 +729,104 @@
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stats-inner">
-    <div class="stat">
-      <div class="stat-num">24h</div>
-      <div class="stat-label">Aberto todos os dias</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">+470</div>
-      <div class="stat-label">Avaliações Positivas</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">+30 anos</div>
-      <div class="stat-label">De experiência</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num" style="font-size:18px;letter-spacing:0;">Fácil Acesso</div>
-      <div class="stat-label">Na Estrada das Lágrimas</div>
+  <div class="stats-marquee">
+    <div class="stats-track">
+      <div class="stat">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Aberto todos os dias</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">+470</div>
+        <div class="stat-label">Avaliações Positivas</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">+30 anos</div>
+        <div class="stat-label">De experiência</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Aberto todos os dias</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+470</div>
+        <div class="stat-label">Avaliações Positivas</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+30 anos</div>
+        <div class="stat-label">De experiência</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Aberto todos os dias</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+470</div>
+        <div class="stat-label">Avaliações Positivas</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+30 anos</div>
+        <div class="stat-label">De experiência</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Aberto todos os dias</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+470</div>
+        <div class="stat-label">Avaliações Positivas</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+30 anos</div>
+        <div class="stat-label">De experiência</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Aberto todos os dias</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+470</div>
+        <div class="stat-label">Avaliações Positivas</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+30 anos</div>
+        <div class="stat-label">De experiência</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Aberto todos os dias</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+470</div>
+        <div class="stat-label">Avaliações Positivas</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+30 anos</div>
+        <div class="stat-label">De experiência</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Aberto todos os dias</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+470</div>
+        <div class="stat-label">Avaliações Positivas</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+30 anos</div>
+        <div class="stat-label">De experiência</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Aberto todos os dias</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+470</div>
+        <div class="stat-label">Avaliações Positivas</div>
+      </div>
+      <div class="stat" aria-hidden="true">
+        <div class="stat-num">+30 anos</div>
+        <div class="stat-label">De experiência</div>
+      </div>
     </div>
   </div>
 </div>
@@ -808,10 +883,11 @@
 </div>
 
 <!-- SERVIÇOS -->
+<div style="background:#ECECEC; padding: 1px 0;">
 <div class="sec">
   <div class="sec-header">
     <span class="sec-tag">O que fazemos</span>
-    <h2 class="sec-titulo">Atendimento rápido e especializado,<br /> <span>a qualquer hora do dia ou da noite</span></h2>
+    <h2 class="sec-titulo">Atendimento rápido e<br class="br-mob" /> especializado,<br class="br-desk" /> <span>a qualquer<br class="br-mob" /> hora do dia ou da noite</span></h2>
     <p class="sec-sub">A equipe Ethicus está pronta para cuidar do seu companheiro com técnica avançada e estrutura completa.</p>
   </div>
   <div class="servicos-grid">
@@ -845,9 +921,10 @@
     </div>
   </div>
 </div>
+</div>
 
 <!-- POR QUE -->
-<div style="background:var(--cinza-claro); padding: 1px 0;">
+<div style="background:var(--branco); padding: 1px 0;">
   <div class="sec-porque">
     <div class="porque-intro">
       <span class="sec-tag">Por que São Caetano confia no Ethicus?</span>
@@ -995,6 +1072,14 @@
 
   setInterval(function() { moverCarrossel(1); }, 5000);
   window.addEventListener('resize', atualizarCarrossel);
+
+  /* Faixa do hero: some enquanto a imagem não estiver na pasta */
+  var heroBanner = document.querySelector('.hero-banner');
+  if (heroBanner) {
+    var heroImg = heroBanner.querySelector('img');
+    heroImg.addEventListener('error', function() { heroBanner.style.display = 'none'; });
+    if (heroImg.complete && heroImg.naturalWidth === 0) heroBanner.style.display = 'none';
+  }
 
   /* Mapa: só carrega quando o usuário chega perto dele */
   var mapaIframe = document.querySelector('.mapa iframe[data-src]');
