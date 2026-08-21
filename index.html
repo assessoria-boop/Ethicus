@@ -121,16 +121,23 @@
       background: var(--branco);
     }
 
-    /* faixa de imagem no rodape do hero, com a base curvada */
+    /* faixa de imagem no topo do hero, com a base curvada */
+    .hero-banner-wrap {
+      width: 100%;
+      margin-bottom: 24px;
+      padding-bottom: 2px;
+      background: linear-gradient(90deg, #4E9B72 0%, #16352A 50%, #4E9B72 100%);
+      border-radius: 0 0 50% 50% / 0 0 82px 82px;
+      flex-shrink: 0;
+    }
+
     .hero-banner {
       position: relative;
       width: 100%;
       height: 300px;
-      margin-bottom: 24px;
       border-radius: 0 0 50% 50% / 0 0 80px 80px;
       overflow: hidden;
       background: var(--cinza-claro);
-      flex-shrink: 0;
     }
     .hero-banner picture { display: contents; }
     .hero-banner img {
@@ -184,26 +191,55 @@
       color: var(--texto);
       letter-spacing: -1.5px;
       line-height: 1.14;
-      margin-bottom: 18px;
+      margin-bottom: 30px;
       margin-top: 4px;
     }
 
     .br-mob { display: none; }
 
     .hero h1 .h1-destaque {
-      background: var(--gradiente-verde);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: #4E9B72;
+    }
+
+    /* selo de destaque no "24h" */
+    .hero h1 .h1-24h {
+      display: inline-block;
+      background: #9C0300;
+      color: var(--branco);
+      padding: 2px 16px 6px;
+      border-radius: 16px;
+      letter-spacing: -1px;
+      line-height: 1;
+      box-shadow: 0 4px 14px rgba(156,3,0,0.30);
+      animation: pulso24h 2.6s ease-in-out infinite;
+    }
+
+    @keyframes pulso24h {
+      0%, 100% { transform: scale(1);    box-shadow: 0 4px 14px rgba(156,3,0,0.30); }
+      50%      { transform: scale(1.045); box-shadow: 0 6px 20px rgba(156,3,0,0.42); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero h1 .h1-24h { animation: none; }
     }
 
     .hero-rating {
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.4;
-      color: var(--cinza);
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--branco);
+      border: 1px solid #E4EDE7;
+      border-radius: 999px;
+      padding: 9px 18px;
+      box-shadow: 0 4px 14px rgba(14,32,25,0.08);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.35;
+      color: var(--texto);
       margin-bottom: 40px;
     }
+    .hero-rating strong { font-weight: 800; color: #2E6349; }
+    .hero-rating .hero-pin { font-size: 13px; line-height: 1; }
 
     .hero-btns {
       display: flex;
@@ -636,12 +672,21 @@
         padding: 0 0 56px;
       }
       .hero-content { padding: 0 20px; }
-      .hero-banner { height: 190px; margin-bottom: 18px; border-radius: 0 0 50% 50% / 0 0 42px 42px; }
-      .hero h1 { font-size: 38px; letter-spacing: -1px; margin-bottom: 14px; }
+      .hero-banner-wrap { margin-bottom: 18px; border-radius: 0 0 50% 50% / 0 0 44px 44px; }
+      .hero-banner { height: 190px; border-radius: 0 0 50% 50% / 0 0 42px 42px; }
+      .hero h1 { font-size: 34px; letter-spacing: -1px; margin-bottom: 26px; }
+      .hero h1 .h1-destaque { font-size: 1.2em; line-height: 1.12; }
+      .hero h1 .h1-24h { padding: 2px 12px 5px; border-radius: 13px; }
       .br-mob { display: inline; }
       .br-desk { display: none; }
       .hero-logo { width: 92px; height: 92px; margin-bottom: 14px; }
-      .hero-rating { font-size: 16px; margin-bottom: 28px; }
+      .hero-rating {
+        font-size: 12.5px;
+        padding: 8px 14px;
+        gap: 6px;
+        margin-bottom: 28px;
+        text-align: center;
+      }
       .hero-btns { max-width: 100%; }
 
       .stats { padding: 22px 0; }
@@ -683,7 +728,7 @@
     }
 
     @media (max-width: 420px) {
-      .hero h1 { font-size: 35px; }
+      .hero h1 { font-size: 31px; }
     }
   </style>
 </head>
@@ -700,11 +745,13 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-banner">
+  <div class="hero-banner-wrap">
+    <div class="hero-banner">
     <picture>
       <source media="(max-width: 900px)" srcset="bg-mobile.webp" type="image/webp" />
       <img src="bg-desktop.webp" alt="Família deitada no chão de casa com o cachorro" decoding="async" loading="eager" width="2400" height="629" />
     </picture>
+    </div>
   </div>
 
   <div class="hero-content">
@@ -713,10 +760,10 @@
     </div>
     <p class="hero-clinica-nome">Ethicus</p>
     <h1>
-      <span class="h1-destaque">Hospital<br class="br-mob" /> Veterinário 24h</span><br />
-      em São Caetano
+      <span class="h1-destaque">Hospital<br class="br-mob" /> Veterinário <span class="h1-24h">24h</span></span><br />
+      em São Caetano - SP
     </h1>
-    <p class="hero-rating">A saúde do seu pet é nossa prioridade!</p>
+    <p class="hero-rating"><span class="hero-pin">📍</span> <strong>Localização Privilegiada</strong> · São Caetano do Sul</p>
     <div class="hero-btns">
       <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="btn-wpp">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
