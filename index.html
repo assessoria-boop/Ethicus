@@ -294,7 +294,6 @@
       width: max-content;
       animation: statsPassando 40s linear infinite;
     }
-    .stats-marquee:hover .stats-track { animation-play-state: paused; }
 
     @keyframes statsPassando {
       from { transform: translateX(0); }
@@ -448,111 +447,100 @@
     /* SERVIÇOS */
     .servicos-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
     .servico-card {
       background: var(--branco);
       border: 1px solid var(--borda);
-      border-radius: 20px;
-      padding: 26px 22px;
+      border-radius: 22px;
+      padding: 14px;
+      text-align: left;
+      overflow: hidden;
       transition: all 0.2s;
     }
 
     .servico-card:hover {
-      background: var(--verde-suave);
       border-color: #C9E0D3;
+      box-shadow: 0 10px 28px rgba(14,32,25,0.09);
       transform: translateY(-3px);
     }
 
-    .servico-icone {
-      width: 44px; height: 44px;
-      background: var(--gradiente);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
-
-    .servico-icone svg {
-      width: 22px; height: 22px;
-      stroke: var(--branco);
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .servico-card h3 { font-size: 15px; font-weight: 700; line-height: 1.4; }
-    .servico-card p  { font-size: 13px; color: var(--cinza); margin-top: 6px; line-height: 1.5; }
-
-    /* POR QUE (galeria da clínica) */
-    .sec-porque {
-      padding: 88px 48px;
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .porque-intro .sec-titulo { margin-bottom: 0; }
-
-    .clinica-galeria {
-      position: relative;
+    .servico-img {
       width: 100%;
-      max-width: 480px;
-      aspect-ratio: 4 / 3;
-      border-radius: 24px;
+      aspect-ratio: 3 / 2;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 12px 40px rgba(14,32,25,0.16);
-      background: var(--creme);
-      margin: 28px 0 0;
+      background: var(--cinza-claro);
     }
-    .clinica-galeria img {
-      position: absolute;
-      inset: 0;
+    .servico-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      display: block;
+    }
+
+
+    .servico-corpo {
+      margin-top: 14px;
+      padding: 16px 8px 8px;
+      border-top: 1px solid var(--borda);
+    }
+
+
+    .servico-card h3 { font-size: 16px; font-weight: 800; line-height: 1.35; color: var(--marca); }
+    .servico-card p  { font-size: 13px; color: var(--cinza); margin-top: 6px; line-height: 1.5; }
+
+    /* GALERIA */
+    .sec-galeria { background: var(--branco); padding: 88px 0; }
+    .sec-galeria-inner { max-width: 1440px; margin: 0 auto; padding: 0 48px; }
+
+    .galeria-carrossel {
+      display: flex;
+      gap: 14px;
+      margin-top: 8px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      touch-action: pan-x pan-y;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+    }
+    .galeria-carrossel::-webkit-scrollbar { display: none; }
+    .galeria-carrossel.arrastando { cursor: grabbing; scroll-behavior: auto; }
+    .galeria-carrossel.arrastando img { pointer-events: none; }
+
+    .galeria-item {
+      flex: 0 0 calc((100% - 56px) / 5);
+      aspect-ratio: 2 / 3;
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: var(--cinza-claro);
+      border: 1px solid var(--borda);
+    }
+    .galeria-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .galeria-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(14,32,25,0.35), rgba(14,32,25,0) 55%);
       opacity: 0;
-      transition: opacity 1.2s ease;
+      transition: opacity 0.35s ease;
+      pointer-events: none;
     }
-    .clinica-galeria img.ativo { opacity: 1; }
+    .galeria-item:hover img { transform: scale(1.07); }
+    .galeria-item:hover::after { opacity: 1; }
 
-    .motivos { display: flex; flex-direction: column; gap: 8px; }
-
-    .motivo {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      padding: 18px 20px;
-      border-radius: 16px;
-      border: 1px solid transparent;
-      transition: all 0.2s;
-    }
-
-    .motivo:hover { background: var(--verde-suave); border-color: #C9E0D3; }
-
-    .motivo-num {
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      background: var(--gradiente);
-      color: var(--branco);
-      font-size: 14px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .motivo h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-    .motivo p  { font-size: 13px; color: var(--cinza); line-height: 1.5; }
 
     /* CTA */
     .sec-cta-wrap { background: var(--gradiente); }
@@ -703,14 +691,24 @@
       .sec-titulo { font-size: 26px; }
       .sec-sub { margin-left: auto; margin-right: auto; margin-bottom: 32px; }
 
-      .servicos-grid { grid-template-columns: 1fr; gap: 12px; }
-      .servico-card { text-align: center; }
-      .servico-icone { margin-left: auto; margin-right: auto; }
+      .servicos-grid { grid-template-columns: 1fr; gap: 14px; }
+      .servico-card { max-width: 420px; margin: 0 auto; }
 
-      .sec-porque { grid-template-columns: 1fr; gap: 40px; padding: 56px 20px; text-align: center; }
-      .clinica-galeria { max-width: 440px; margin: 24px auto 0; }
-      .motivos { align-items: center; }
-      .motivo { text-align: left; max-width: 440px; width: 100%; }
+      .sec-galeria { padding: 56px 0; }
+      .sec-galeria-inner { padding: 0 20px; }
+      .galeria-carrossel {
+        gap: 0;
+        padding: 4px 7.5% 34px;
+        scroll-padding: 0 7.5%;
+      }
+      .galeria-item {
+        flex: 0 0 85%;
+        margin: 0 -2%;
+        border-radius: 18px;
+        scroll-snap-align: center;
+        transform-origin: center top;
+        will-change: transform;
+      }
 
       .sec-cta { padding: 56px 20px; }
       .sec-cta h2 { font-size: 26px; }
@@ -939,81 +937,158 @@
   </div>
   <div class="servicos-grid">
     <div class="servico-card">
-      <div class="servico-icone">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div class="servico-img">
+        <img src="servicos/consulta-clinico-geral.webp" alt="Consulta Clínico Geral no Ethicus" loading="lazy" decoding="async" />
       </div>
-      <h3>Equipe veterinária de alto nível técnico</h3>
-      <p>Capacidade para lidar com casos complexos do início ao fim.</p>
+      <div class="servico-corpo">
+        <h3>Consulta Clínico Geral</h3>
+        <p>Avaliação completa do seu pet, com diagnóstico claro e cada conduta explicada.</p>
+      </div>
     </div>
     <div class="servico-card">
-      <div class="servico-icone">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+      <div class="servico-img">
+        <img src="servicos/cirurgias-e-internacao.webp" alt="Cirurgias e Internação no Ethicus" loading="lazy" decoding="async" />
       </div>
-      <h3>Tomografia e UTI no mesmo lugar</h3>
-      <p>Diagnóstico preciso e cuidado intensivo sem transferências.</p>
+      <div class="servico-corpo">
+        <h3>Cirurgias e Internação</h3>
+        <p>Do procedimento à recuperação, com a mesma equipe acompanhando de perto.</p>
+      </div>
     </div>
     <div class="servico-card">
-      <div class="servico-icone">
-        <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+      <div class="servico-img">
+        <img src="servicos/emergencias.webp" alt="Emergências no Ethicus" loading="lazy" decoding="async" />
       </div>
-      <h3>Emergências atendidas com agilidade</h3>
-      <p>Prontos para agir nos momentos que mais importam.</p>
+      <div class="servico-corpo">
+        <h3>Emergências</h3>
+        <p>Prontidão para agir nos momentos que mais importam, a qualquer hora.</p>
+      </div>
     </div>
     <div class="servico-card">
-      <div class="servico-icone">
-        <svg viewBox="0 0 24 24"><path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1z"/><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M12 10v6M9 13h6"/></svg>
+      <div class="servico-img">
+        <img src="servicos/exames-de-imagem.webp" alt="Exames de Imagem no Ethicus" loading="lazy" decoding="async" />
       </div>
-      <h3>Consulta Clínica, Internação, Cirurgias</h3>
-      <p>Do diagnóstico ao pós-operatório, tudo acompanhado pela mesma equipe.</p>
+      <div class="servico-corpo">
+        <h3>Exames de Imagem</h3>
+        <p>Raio-x e ultrassom no local, sem transferir o seu pet para outro endereço.</p>
+      </div>
+    </div>
+    <div class="servico-card">
+      <div class="servico-img">
+        <img src="servicos/laboratorio-proprio.webp" alt="Laboratório Próprio no Ethicus" loading="lazy" decoding="async" />
+      </div>
+      <div class="servico-corpo">
+        <h3>Laboratório Próprio</h3>
+        <p>Resultados rápidos para decidir o tratamento sem tempo de espera.</p>
+      </div>
+    </div>
+    <div class="servico-card">
+      <div class="servico-img">
+        <img src="servicos/tomografia-e-uti.webp" alt="Tomografia e UTI no Ethicus" loading="lazy" decoding="async" />
+      </div>
+      <div class="servico-corpo">
+        <h3>Tomografia e UTI</h3>
+        <p>Diagnóstico preciso e cuidado intensivo no mesmo lugar, sem transferências.</p>
+      </div>
     </div>
   </div>
 </div>
 </div>
 
-<!-- POR QUE -->
-<div style="background:var(--branco); padding: 1px 0;">
-  <div class="sec-porque">
-    <div class="porque-intro">
-      <span class="sec-tag">Por que São Caetano confia no Ethicus?</span>
-      <h2 class="sec-titulo" style="font-size:32px;">Cuidado que<br class="br-mob" /> <span>não para.</span></h2>
-      <div class="clinica-galeria">
-        <img src="clinica1.webp" class="ativo" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-        <img src="clinica2.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-        <img src="clinica3.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-        <img src="clinica4.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-      </div>
+<!-- GALERIA -->
+<div class="sec-galeria">
+  <div class="sec-galeria-inner">
+    <div class="sec-header">
+      <span class="sec-tag">Por dentro do Ethicus</span>
+      <h2 class="sec-titulo">Conheça nossa <span>estrutura</span></h2>
     </div>
-    <div>
-      <div class="motivos">
-        <div class="motivo">
-          <div class="motivo-num">01</div>
-          <div>
-            <h4>24 horas, 7 dias por semana</h4>
-            <p>Seu pet sempre terá onde receber atendimento especializado.</p>
-          </div>
-        </div>
-        <div class="motivo">
-          <div class="motivo-num">02</div>
-          <div>
-            <h4>Estrutura hospitalar completa</h4>
-            <p>Internação, cirurgias, UTI e tomografia em um só lugar.</p>
-          </div>
-        </div>
-        <div class="motivo">
-          <div class="motivo-num">03</div>
-          <div>
-            <h4>Atendimento humanizado</h4>
-            <p>Cuidado carinhoso e responsável focado no bem-estar do seu animal.</p>
-          </div>
-        </div>
-        <div class="motivo">
-          <div class="motivo-num">04</div>
-          <div>
-            <h4>+30 anos de experiência</h4>
-            <p>Mais de 80 mil pets atendidos ao longo da nossa história em São Caetano.</p>
-          </div>
-        </div>
-      </div>
+
+    <div class="galeria-carrossel" id="galeriaCarrossel">
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto2.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto3.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto4.webp" alt="Atendimento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto5.webp" alt="Ambiente do Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto1.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto6.webp" alt="Equipe do Ethicus cuidando de um pet" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto7.webp" alt="Bastidores do Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto8.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto9.webp" alt="Momento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item">
+        <img src="galeria/foto2.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item">
+        <img src="galeria/foto3.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" id="galeriaAncora">
+        <img src="galeria/foto4.webp" alt="Atendimento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item">
+        <img src="galeria/foto5.webp" alt="Ambiente do Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item">
+        <img src="galeria/foto1.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item">
+        <img src="galeria/foto6.webp" alt="Equipe do Ethicus cuidando de um pet" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item">
+        <img src="galeria/foto7.webp" alt="Bastidores do Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item">
+        <img src="galeria/foto8.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item">
+        <img src="galeria/foto9.webp" alt="Momento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto2.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto3.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto4.webp" alt="Atendimento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto5.webp" alt="Ambiente do Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto1.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto6.webp" alt="Equipe do Ethicus cuidando de um pet" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto7.webp" alt="Bastidores do Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto8.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
+      </figure>
+      <figure class="galeria-item" aria-hidden="true">
+        <img src="galeria/foto9.webp" alt="Momento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
+      </figure>
+    </div>
+
+    <div class="carrossel-nav">
+      <button class="carrossel-btn" onclick="moverGaleria(-1)" aria-label="Fotos anteriores">&#8592;</button>
+      <button class="carrossel-btn" onclick="moverGaleria(1)" aria-label="Próximas fotos">&#8594;</button>
     </div>
   </div>
 </div>
@@ -1120,6 +1195,109 @@
   setInterval(function() { moverCarrossel(1); }, 5000);
   window.addEventListener('resize', atualizarCarrossel);
 
+  /* Galeria: carrossel com setas e arraste */
+  var galeriaEl = document.getElementById('galeriaCarrossel');
+
+  function moverGaleria(dir) {
+    if (!galeriaEl) return;
+    var item = galeriaEl.querySelector('.galeria-item');
+    if (!item) return;
+    var passo = item.getBoundingClientRect().width + parseFloat(getComputedStyle(galeriaEl).gap || 14);
+    galeriaEl.scrollBy({ left: dir * passo, behavior: 'smooth' });
+  }
+
+  function atualizarLeque() {
+    if (!galeriaEl) return;
+    var itens = galeriaEl.querySelectorAll('.galeria-item');
+    if (!window.matchMedia('(max-width: 900px)').matches) {
+      itens.forEach(function(it) { it.style.transform = ''; it.style.opacity = ''; it.style.zIndex = ''; });
+      return;
+    }
+    var caixa = galeriaEl.getBoundingClientRect();
+    var centro = caixa.left + caixa.width / 2;
+    itens.forEach(function(it) {
+      var r = it.getBoundingClientRect();
+      var dist = Math.abs((r.left + r.width / 2) - centro) / caixa.width;
+      var t = Math.min(dist * 2, 1);
+      it.style.transform = 'scale(' + (1 - 0.16 * t).toFixed(3) + ') translateY(' + (24 * t).toFixed(1) + 'px)';
+      it.style.opacity = (1 - 0.25 * t).toFixed(2);
+      it.style.zIndex = String(10 - Math.round(t * 10));
+    });
+  }
+
+  var galeriaAncora = document.getElementById('galeriaAncora');
+
+  /* largura de um conjunto de fotos (são 3 conjuntos iguais no HTML) */
+  function larguraConjunto() {
+    return galeriaEl ? galeriaEl.scrollWidth / 3 : 0;
+  }
+
+  function irSemAnimar(destino) {
+    var antes = galeriaEl.style.scrollBehavior;
+    galeriaEl.style.scrollBehavior = 'auto';
+    galeriaEl.scrollLeft = destino;
+    galeriaEl.offsetHeight; /* força o reflow antes de devolver o smooth */
+    galeriaEl.style.scrollBehavior = antes || '';
+  }
+
+  /* deixa a foto principal centralizada no conjunto do meio */
+  function centralizarPrincipal() {
+    if (!galeriaEl || !galeriaAncora) return;
+    irSemAnimar(galeriaAncora.offsetLeft - (galeriaEl.clientWidth - galeriaAncora.offsetWidth) / 2);
+    atualizarLeque();
+  }
+
+  /* rolagem infinita: quando sai do conjunto do meio, volta para a posição equivalente */
+  function normalizarLoop() {
+    if (!galeriaEl) return;
+    var conjunto = larguraConjunto();
+    if (!conjunto) return;
+    if (galeriaEl.scrollLeft < conjunto * 0.5) irSemAnimar(galeriaEl.scrollLeft + conjunto);
+    else if (galeriaEl.scrollLeft > conjunto * 1.5) irSemAnimar(galeriaEl.scrollLeft - conjunto);
+  }
+
+  if (galeriaEl) {
+    var pedido = null, paradaLoop = null;
+    galeriaEl.addEventListener('scroll', function() {
+      if (!pedido) pedido = requestAnimationFrame(function() { pedido = null; atualizarLeque(); });
+      clearTimeout(paradaLoop);
+      paradaLoop = setTimeout(normalizarLoop, 160);
+    }, { passive: true });
+    window.addEventListener('resize', centralizarPrincipal);
+    window.addEventListener('load', centralizarPrincipal);
+    centralizarPrincipal();
+
+    var arrastando = false, inicioX = 0, inicioScroll = 0;
+    galeriaEl.addEventListener('mousedown', function(e) {
+      arrastando = true;
+      inicioX = e.clientX;
+      inicioScroll = galeriaEl.scrollLeft;
+      galeriaEl.classList.add('arrastando');
+    });
+    document.addEventListener('mousemove', function(e) {
+      if (!arrastando) return;
+      e.preventDefault();
+      galeriaEl.scrollLeft = inicioScroll - (e.clientX - inicioX);
+    });
+    document.addEventListener('mouseup', function() {
+      if (!arrastando) return;
+      arrastando = false;
+      galeriaEl.classList.remove('arrastando');
+    });
+  }
+
+  /* Galeria: mantém o bloco mesmo sem o arquivo na pasta */
+  document.querySelectorAll('.galeria-item img').forEach(function(img) {
+    img.addEventListener('error', function() { img.remove(); });
+    if (img.complete && img.naturalWidth === 0) img.remove();
+  });
+
+  /* Cards de serviço: mantém o espaço da foto mesmo sem o arquivo na pasta */
+  document.querySelectorAll('.servico-img img').forEach(function(img) {
+    img.addEventListener('error', function() { img.remove(); });
+    if (img.complete && img.naturalWidth === 0) img.remove();
+  });
+
   /* Faixa do hero: some enquanto a imagem não estiver na pasta */
   var heroBanner = document.querySelector('.hero-banner');
   if (heroBanner) {
@@ -1145,31 +1323,6 @@
     }
   }
 
-  /* Galeria da clínica com fade (ignora imagens ainda não enviadas) */
-  var galeria = document.querySelector('.clinica-galeria');
-  var galeriaAtual = 0;
-
-  function iniciarGaleria() {
-    var imgs = galeria.querySelectorAll('img');
-    if (!imgs.length) { galeria.style.display = 'none'; return; }
-    imgs[0].classList.add('ativo');
-    if (imgs.length < 2) return;
-    setInterval(function() {
-      imgs[galeriaAtual].classList.remove('ativo');
-      galeriaAtual = (galeriaAtual + 1) % imgs.length;
-      imgs[galeriaAtual].classList.add('ativo');
-    }, 4000);
-  }
-
-  var pendentes = galeria.querySelectorAll('img').length;
-  function checarGaleria() { if (--pendentes === 0) iniciarGaleria(); }
-
-  galeria.querySelectorAll('img').forEach(function(img) {
-    img.addEventListener('error', function() { img.remove(); checarGaleria(); });
-    if (img.complete && img.naturalWidth > 0) { checarGaleria(); }
-    else if (img.complete) { img.remove(); checarGaleria(); }
-    else { img.addEventListener('load', checarGaleria); }
-  });
 </script>
 </body>
 </html>
