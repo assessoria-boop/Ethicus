@@ -191,55 +191,27 @@
       color: var(--texto);
       letter-spacing: -1.5px;
       line-height: 1.14;
-      margin-bottom: 30px;
+      margin-bottom: 18px;
       margin-top: 4px;
     }
 
     .br-mob { display: none; }
 
     .hero h1 .h1-destaque {
-      color: #4E9B72;
+      background: var(--gradiente-verde);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    /* selo de destaque no "24h" */
-    .hero h1 .h1-24h {
-      display: inline-block;
-      background: #9C0300;
-      color: var(--branco);
-      padding: 2px 16px 6px;
-      border-radius: 16px;
-      letter-spacing: -1px;
-      line-height: 1;
-      box-shadow: 0 4px 14px rgba(156,3,0,0.30);
-      animation: pulso24h 2.6s ease-in-out infinite;
-    }
-
-    @keyframes pulso24h {
-      0%, 100% { transform: scale(1);    box-shadow: 0 4px 14px rgba(156,3,0,0.30); }
-      50%      { transform: scale(1.045); box-shadow: 0 6px 20px rgba(156,3,0,0.42); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero h1 .h1-24h { animation: none; }
-    }
 
     .hero-rating {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--branco);
-      border: 1px solid #E4EDE7;
-      border-radius: 999px;
-      padding: 9px 18px;
-      box-shadow: 0 4px 14px rgba(14,32,25,0.08);
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.35;
-      color: var(--texto);
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--cinza);
       margin-bottom: 40px;
     }
-    .hero-rating strong { font-weight: 800; color: #2E6349; }
-    .hero-rating .hero-pin { font-size: 13px; line-height: 1; }
 
     .hero-btns {
       display: flex;
@@ -398,7 +370,7 @@
     }
     .carrossel-dot.ativo { background: var(--marca); }
 
-    .depoi-titulo { font-size: 32px; margin-bottom: 14px; }
+    .sec-titulo.depoi-titulo { font-size: 38px; margin-bottom: 14px; }
 
     /* SEÇÕES GERAIS */
     .sec {
@@ -447,49 +419,44 @@
     /* SERVIÇOS */
     .servicos-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
     .servico-card {
       background: var(--branco);
       border: 1px solid var(--borda);
-      border-radius: 22px;
-      padding: 14px;
-      text-align: left;
-      overflow: hidden;
+      border-radius: 20px;
+      padding: 26px 22px;
       transition: all 0.2s;
     }
 
     .servico-card:hover {
+      background: var(--verde-suave);
       border-color: #C9E0D3;
-      box-shadow: 0 10px 28px rgba(14,32,25,0.09);
       transform: translateY(-3px);
     }
 
-    .servico-img {
-      width: 100%;
-      aspect-ratio: 3 / 2;
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--cinza-claro);
-    }
-    .servico-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .servico-icone {
+      width: 44px; height: 44px;
+      background: var(--gradiente);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
     }
 
-
-    .servico-corpo {
-      margin-top: 14px;
-      padding: 16px 8px 8px;
-      border-top: 1px solid var(--borda);
+    .servico-icone svg {
+      width: 22px; height: 22px;
+      stroke: var(--branco);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-
-    .servico-card h3 { font-size: 16px; font-weight: 800; line-height: 1.35; color: var(--marca); }
+    .servico-card h3 { font-size: 15px; font-weight: 800; line-height: 1.4; color: var(--marca); }
     .servico-card p  { font-size: 13px; color: var(--cinza); margin-top: 6px; line-height: 1.5; }
 
     /* GALERIA */
@@ -695,21 +662,14 @@
         padding: 0 0 56px;
       }
       .hero-content { padding: 0 20px; }
-      .hero-banner-wrap { margin-bottom: 18px; border-radius: 0 0 50% 50% / 0 0 44px 44px; }
-      .hero-banner { height: 190px; border-radius: 0 0 50% 50% / 0 0 42px 42px; }
-      .hero h1 { font-size: 34px; letter-spacing: -1px; margin-bottom: 26px; }
-      .hero h1 .h1-destaque { font-size: 1.2em; line-height: 1.12; }
-      .hero h1 .h1-24h { padding: 2px 12px 5px; border-radius: 13px; }
+      .hero-banner-wrap { margin-bottom: 18px; border-radius: 0 0 50% 50% / 0 0 58px 58px; }
+      .hero-banner { height: 252px; border-radius: 0 0 50% 50% / 0 0 56px 56px; }
+      .hero-banner img { object-position: center 25%; }
+      .hero h1 { font-size: 38px; letter-spacing: -1px; margin-bottom: 14px; }
       .br-mob { display: inline; }
       .br-desk { display: none; }
       .hero-logo { width: 92px; height: 92px; margin-bottom: 14px; }
-      .hero-rating {
-        font-size: 12.5px;
-        padding: 8px 14px;
-        gap: 6px;
-        margin-bottom: 28px;
-        text-align: center;
-      }
+      .hero-rating { font-size: 16px; margin-bottom: 28px; }
       .hero-btns { max-width: 100%; }
 
       .stats { padding: 22px 0; }
@@ -724,10 +684,12 @@
 
       .sec { padding: 56px 20px; text-align: center; }
       .sec-titulo { font-size: 26px; }
+      .sec-titulo.depoi-titulo { font-size: 28px; }
       .sec-sub { margin-left: auto; margin-right: auto; margin-bottom: 32px; }
 
-      .servicos-grid { grid-template-columns: 1fr; gap: 14px; }
-      .servico-card { max-width: 420px; margin: 0 auto; }
+      .servicos-grid { grid-template-columns: 1fr; gap: 12px; }
+      .servico-card { text-align: center; }
+      .servico-icone { margin-left: auto; margin-right: auto; }
 
       .sec-galeria { padding: 56px 0; }
       .sec-galeria-inner { padding: 0 20px; }
@@ -746,7 +708,7 @@
       }
 
       .sec-cta { padding: 56px 20px; }
-      .sec-cta h2 { font-size: 26px; }
+      .sec-cta h2 { font-size: 30px; }
 
       .sec-local { padding: 56px 20px; }
       .sec-local-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -765,7 +727,7 @@
     }
 
     @media (max-width: 420px) {
-      .hero h1 { font-size: 31px; }
+      .hero h1 { font-size: 35px; }
     }
   </style>
 </head>
@@ -797,10 +759,10 @@
     </div>
     <p class="hero-clinica-nome">Ethicus</p>
     <h1>
-      <span class="h1-destaque">Hospital<br class="br-mob" /> Veterinário <span class="h1-24h">24h</span></span><br />
-      em São Caetano - SP
+      <span class="h1-destaque">Hospital<br class="br-mob" /> Veterinário 24h</span><br />
+      em São Caetano
     </h1>
-    <p class="hero-rating"><span class="hero-pin">📍</span> <strong>Localização Privilegiada</strong> · São Caetano do Sul</p>
+    <p class="hero-rating">A saúde do seu pet é nossa prioridade!</p>
     <div class="hero-btns">
       <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="btn-wpp">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -976,61 +938,61 @@
   </div>
   <div class="servicos-grid">
     <div class="servico-card">
-      <div class="servico-img">
-        <img src="servicos/consulta-clinico-geral.webp" alt="Consulta Clínico Geral no Ethicus" loading="lazy" decoding="async" />
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1z"/><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M12 10v6M9 13h6"/></svg>
       </div>
-      <div class="servico-corpo">
-        <h3>Consulta Clínico Geral</h3>
-        <p>Avaliação completa do seu pet, com diagnóstico claro e cada conduta explicada.</p>
-      </div>
+      <h3>Consulta Clínico Geral</h3>
+      <p>Avaliação completa do seu pet, com diagnóstico claro e cada conduta explicada.</p>
     </div>
     <div class="servico-card">
-      <div class="servico-img">
-        <img src="servicos/cirurgias-e-internacao.webp" alt="Cirurgias e Internação no Ethicus" loading="lazy" decoding="async" />
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><path d="M3 18V9a2 2 0 0 1 2-2h4v5h12v6"/><path d="M3 18h18M20 18v2M3 18v2"/><circle cx="6.5" cy="10" r="1.5"/></svg>
       </div>
-      <div class="servico-corpo">
-        <h3>Cirurgias e Internação</h3>
-        <p>Do procedimento à recuperação, com a mesma equipe acompanhando de perto.</p>
-      </div>
+      <h3>Cirurgias e Internação</h3>
+      <p>Do procedimento à recuperação, com a mesma equipe acompanhando de perto.</p>
     </div>
     <div class="servico-card">
-      <div class="servico-img">
-        <img src="servicos/emergencias.webp" alt="Emergências no Ethicus" loading="lazy" decoding="async" />
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
       </div>
-      <div class="servico-corpo">
-        <h3>Emergências</h3>
-        <p>Prontidão para agir nos momentos que mais importam, a qualquer hora.</p>
-      </div>
+      <h3>Emergências</h3>
+      <p>Prontidão para agir nos momentos que mais importam, a qualquer hora.</p>
     </div>
     <div class="servico-card">
-      <div class="servico-img">
-        <img src="servicos/exames-de-imagem.webp" alt="Exames de Imagem no Ethicus" loading="lazy" decoding="async" />
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M7 12h2l2-3 2 6 2-3h2"/></svg>
       </div>
-      <div class="servico-corpo">
-        <h3>Exames de Imagem</h3>
-        <p>Raio-x e ultrassom no local, sem transferir o seu pet para outro endereço.</p>
-      </div>
+      <h3>Exames de Imagem</h3>
+      <p>Raio-x e ultrassom no local, sem transferir o seu pet para outro endereço.</p>
     </div>
     <div class="servico-card">
-      <div class="servico-img">
-        <img src="servicos/laboratorio-proprio.webp" alt="Laboratório Próprio no Ethicus" loading="lazy" decoding="async" />
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-8V3"/><path d="M7.5 14h9"/></svg>
       </div>
-      <div class="servico-corpo">
-        <h3>Laboratório Próprio</h3>
-        <p>Resultados rápidos para decidir o tratamento sem tempo de espera.</p>
-      </div>
+      <h3>Laboratório Próprio</h3>
+      <p>Resultados rápidos para decidir o tratamento sem tempo de espera.</p>
     </div>
     <div class="servico-card">
-      <div class="servico-img">
-        <img src="servicos/tomografia-e-uti.webp" alt="Tomografia e UTI no Ethicus" loading="lazy" decoding="async" />
+      <div class="servico-icone">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
       </div>
-      <div class="servico-corpo">
-        <h3>Tomografia e UTI</h3>
-        <p>Diagnóstico preciso e cuidado intensivo no mesmo lugar, sem transferências.</p>
-      </div>
+      <h3>Tomografia e UTI</h3>
+      <p>Diagnóstico preciso e cuidado intensivo no mesmo lugar, sem transferências.</p>
     </div>
   </div>
 </div>
+</div>
+
+<!-- CTA -->
+<div class="sec-cta-wrap">
+  <div class="sec-cta">
+    <h2>Ethicus Hospital<br class="br-mob" /> Veterinário<br class="br-desk" /> <span>24h em<br class="br-mob" /> São Caetano do Sul.</span></h2>
+    <p class="sec-cta-texto">Qualquer hora do dia ou da madrugada, nossa equipe está de prontidão para atender com agilidade e dedicação. Fale com a gente agora ou venha até nós.</p>
+    <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="btn-wpp" style="max-width:420px;margin:0 auto;">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Atendimento Rápido Agora
+    </a>
+  </div>
 </div>
 
 <!-- GALERIA -->
@@ -1111,18 +1073,6 @@
       <button class="carrossel-btn" onclick="moverGaleria(-1)" aria-label="Fotos anteriores">&#8592;</button>
       <button class="carrossel-btn" onclick="moverGaleria(1)" aria-label="Próximas fotos">&#8594;</button>
     </div>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="sec-cta-wrap">
-  <div class="sec-cta">
-    <h2>Ethicus Hospital Veterinário<br /> <span>24h em São Caetano do Sul.</span></h2>
-    <p class="sec-cta-texto">Qualquer hora do dia ou da madrugada, nossa equipe está de prontidão para atender com agilidade e dedicação. Fale com a gente agora ou venha até nós.</p>
-    <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="btn-wpp" style="max-width:420px;margin:0 auto;">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Atendimento Rápido Agora
-    </a>
   </div>
 </div>
 
@@ -1332,12 +1282,6 @@
 
   /* Galeria: mantém o bloco mesmo sem o arquivo na pasta */
   document.querySelectorAll('.galeria-item img').forEach(function(img) {
-    img.addEventListener('error', function() { img.remove(); });
-    if (img.complete && img.naturalWidth === 0) img.remove();
-  });
-
-  /* Cards de serviço: mantém o espaço da foto mesmo sem o arquivo na pasta */
-  document.querySelectorAll('.servico-img img').forEach(function(img) {
     img.addEventListener('error', function() { img.remove(); });
     if (img.complete && img.naturalWidth === 0) img.remove();
   });
