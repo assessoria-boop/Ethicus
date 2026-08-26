@@ -575,7 +575,7 @@
     /* FOOTER */
     footer {
       border-top: 1px solid var(--borda);
-      padding: 32px 48px 108px;
+      padding: 32px 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -593,38 +593,97 @@
     .footer-texto { font-size: 13px; color: var(--cinza); }
     .footer-texto strong { color: var(--texto); }
 
-    /* RODAPÉ FIXO */
-    .barra-fixa {
+    /* CARD DE MENSAGEM */
+    .card-msg {
       position: fixed;
-      left: 0; right: 0; bottom: 0;
+      right: 28px;
+      bottom: 98px;
       z-index: 998;
+      width: 300px;
+      max-width: calc(100vw - 40px);
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: 18px;
+      box-shadow: 0 12px 34px rgba(14,32,25,0.20);
+      opacity: 0;
+      transform: translate(18px, 26px) scale(0.55);
+      transform-origin: calc(100% - 26px) 100%;
+      transition: opacity 0.28s ease, transform 0.38s cubic-bezier(0.22, 1.2, 0.36, 1);
+      pointer-events: none;
+    }
+    .card-msg.visivel { opacity: 1; transform: none; pointer-events: auto; }
+
+    /* rabinho do balão, apontando para o botão do WhatsApp */
+    .card-msg::after {
+      content: '';
+      position: absolute;
+      right: 22px;
+      bottom: -8px;
+      width: 16px; height: 16px;
+      background: var(--branco);
+      border-right: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+      border-bottom-right-radius: 4px;
+      transform: rotate(45deg);
+    }
+    .card-msg.fechado { display: none; }
+
+    .card-msg-link {
       display: flex;
-      flex-direction: column;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 14px 34px 15px 14px;
+      text-decoration: none;
+    }
+
+    .card-msg-logo {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--creme);
+      flex-shrink: 0;
+    }
+    .card-msg-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+    .card-msg-corpo { min-width: 0; }
+
+    .card-msg-nome {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 12px 20px 14px;
-      background: var(--gradiente);
-      box-shadow: 0 -6px 26px rgba(14,32,25,0.26);
-      transform: translateY(110%);
-      transition: transform 0.35s ease;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--marca);
+      margin-bottom: 3px;
     }
-    .barra-fixa.visivel { transform: none; }
-
-    .barra-fixa-cta {
-      color: rgba(255,255,255,0.88);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      text-align: center;
+    .card-msg-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--verde-wpp);
+      animation: pulse 2s infinite;
     }
 
-    .barra-fixa-btn {
-      width: auto;
-      padding: 13px 26px;
-      font-size: 14px;
-      white-space: nowrap;
-      box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+    .card-msg-texto {
+      display: block;
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: var(--texto);
+      font-weight: 500;
     }
+
+    .card-msg-fechar {
+      position: absolute;
+      top: 7px; right: 9px;
+      width: 22px; height: 22px;
+      border: none;
+      background: none;
+      color: var(--cinza);
+      font-size: 19px;
+      line-height: 1;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .card-msg-fechar:hover { background: var(--cinza-claro); color: var(--texto); }
 
     /* FLUTUANTE */
     .wpp-float {
@@ -641,8 +700,6 @@
       z-index: 999;
       transition: all 0.2s;
     }
-    .wpp-float { transition: transform 0.25s ease, opacity 0.25s ease; }
-    .wpp-float.oculto { opacity: 0; transform: scale(0.6); pointer-events: none; }
     .wpp-float:hover { transform: scale(1.1); }
     .wpp-float svg { width: 28px; height: 28px; fill: white; }
 
@@ -662,8 +719,8 @@
         padding: 0 0 56px;
       }
       .hero-content { padding: 0 20px; }
-      .hero-banner-wrap { margin-bottom: 18px; border-radius: 0 0 50% 50% / 0 0 58px 58px; }
-      .hero-banner { height: 252px; border-radius: 0 0 50% 50% / 0 0 56px 56px; }
+      .hero-banner-wrap { margin-bottom: 18px; border-radius: 0 0 50% 50% / 0 0 38px 38px; }
+      .hero-banner { height: 224px; border-radius: 0 0 50% 50% / 0 0 36px 36px; }
       .hero-banner img { object-position: center 25%; }
       .hero h1 { font-size: 38px; letter-spacing: -1px; margin-bottom: 14px; }
       .br-mob { display: inline; }
@@ -716,11 +773,9 @@
       .info-box { text-align: left; }
       .mapa { height: 260px; }
 
-      footer { padding: 24px 20px 104px; flex-direction: column; text-align: center; }
+      footer { padding: 24px 20px; flex-direction: column; text-align: center; }
 
-      .barra-fixa { padding: 10px 16px 12px; gap: 6px; }
-      .barra-fixa-cta { font-size: 12.5px; }
-      .barra-fixa-btn { width: 100%; max-width: 380px; padding: 13px 18px; font-size: 14px; }
+      .card-msg { right: 20px; bottom: 92px; width: 290px; }
 
       .wpp-float { width: 62px; height: 62px; bottom: 20px; right: 20px; }
       .wpp-float svg { width: 30px; height: 30px; }
@@ -1115,13 +1170,16 @@
   <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="nav-btn">Atendimento Rápido Agora</a>
 </footer>
 
-<!-- RODAPÉ FIXO -->
-<div class="barra-fixa" id="barraFixa">
-  <p class="barra-fixa-cta">Entre em contato</p>
-  <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="btn-wpp barra-fixa-btn">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Atendimento Rápido Agora
+<!-- CARD DE MENSAGEM -->
+<div class="card-msg" id="cardMsg">
+  <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="card-msg-link">
+    <span class="card-msg-logo"><img src="logo.webp" alt="" width="40" height="40" decoding="async" /></span>
+    <span class="card-msg-corpo">
+      <span class="card-msg-nome">Ethicus <i class="card-msg-dot"></i></span>
+      <span class="card-msg-texto">Emergência com seu pet? Fale com nossa equipe agora mesmo!</span>
+    </span>
   </a>
+  <button class="card-msg-fechar" id="cardMsgFechar" aria-label="Fechar mensagem">&times;</button>
 </div>
 
 <!-- BOTÃO FLUTUANTE -->
@@ -1176,17 +1234,21 @@
   window.addEventListener('resize', atualizarCarrossel);
 
   /* Rodapé fixo: entra quando o hero sai da tela */
-  var barraFixa = document.getElementById('barraFixa');
+  var cardMsg = document.getElementById('cardMsg');
   var heroEl = document.querySelector('.hero');
   var flutuante = document.querySelector('.wpp-float');
-  if (barraFixa && heroEl && 'IntersectionObserver' in window) {
-    /* aparece quando a primeira dobra passa, no mobile e no desktop */
-    new IntersectionObserver(function(entradas) {
-      var e = entradas[0];
-      var passouHero = !e.isIntersecting && e.boundingClientRect.bottom <= 0;
-      barraFixa.classList.toggle('visivel', passouHero);
-      if (flutuante) flutuante.classList.toggle('oculto', passouHero);
-    }, { threshold: 0 }).observe(heroEl);
+  if (cardMsg) {
+    /* o balão só sai do botão depois da primeira rolagem da página */
+    var mostrarCard = function() {
+      if (window.scrollY < 40) return;
+      window.removeEventListener('scroll', mostrarCard);
+      cardMsg.classList.add('visivel');
+    };
+    window.addEventListener('scroll', mostrarCard, { passive: true });
+    mostrarCard();
+
+    var fechar = document.getElementById('cardMsgFechar');
+    if (fechar) fechar.addEventListener('click', function() { cardMsg.classList.add('fechado'); });
   }
 
   /* Galeria: carrossel com setas e arraste */
