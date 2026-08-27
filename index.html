@@ -1238,14 +1238,8 @@
   var heroEl = document.querySelector('.hero');
   var flutuante = document.querySelector('.wpp-float');
   if (cardMsg) {
-    /* o balão só sai do botão depois da primeira rolagem da página */
-    var mostrarCard = function() {
-      if (window.scrollY < 40) return;
-      window.removeEventListener('scroll', mostrarCard);
-      cardMsg.classList.add('visivel');
-    };
-    window.addEventListener('scroll', mostrarCard, { passive: true });
-    mostrarCard();
+    /* o balão sai do botão flutuante 5 segundos depois de abrir a página */
+    setTimeout(function() { cardMsg.classList.add('visivel'); }, 5000);
 
     var fechar = document.getElementById('cardMsgFechar');
     if (fechar) fechar.addEventListener('click', function() { cardMsg.classList.add('fechado'); });
