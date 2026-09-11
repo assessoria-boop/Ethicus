@@ -1,788 +1,852 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Ethicus · Hospital Veterinário 24 Horas em São Caetano do Sul</title>
-  <meta name="description" content="Ethicus Hospital Veterinário 24h em São Caetano do Sul/SP. Aberto 24 horas, todos os dias. UTI, tomografia, internação e cirurgias no mesmo lugar." />
-  <link rel="icon" type="image/webp" href="logo.webp" />
-  <link rel="apple-touch-icon" href="logo.webp" />
-  <link rel="preload" as="image" href="logo.webp" fetchpriority="high" type="image/webp" />
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Ethicus · Hospital Veterinário 24 Horas em São Caetano do Sul/SP</title>
+  <meta name="description" content="Ethicus Hospital Veterinário 24h em São Caetano do Sul/SP. Aberto 24 horas, todos os dias: consultas, emergências, cirurgias, internação, UTI, tomografia, exames de imagem e laboratório próprio." />
+  <meta name="theme-color" content="#1F4433" />
+  <link rel="icon" type="image/webp" href="img/logo.webp" />
+  <link rel="apple-touch-icon" href="img/logo.webp" />
+  <link rel="preload" as="image" href="img/hero-cao-1600.webp" media="(min-width:1024px)" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="img/hero-cao-1100.webp" media="(max-width:1023px)" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="font" href="fonts/manrope-latin.woff2" type="font/woff2" crossorigin />
+  <link rel="preload" as="font" href="fonts/montserrat-latin.woff2" type="font/woff2" media="(min-width:1024px)" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
   <script>
-    function _loadGTM(){if(window._gtmLoaded)return;window._gtmLoaded=1;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6VC3VMZ');}
-    ['click','touchstart','scroll','keydown'].forEach(function(e){window.addEventListener(e,_loadGTM,{once:true,passive:true});});
-    setTimeout(_loadGTM,3500);
+    document.documentElement.className += ' js';
+    /* GTM (e o Clarity, quando tiver ID) carregados na primeira interacao (mouse, toque, rolagem ou tecla), sem timer: fora do caminho do carregamento e do PageSpeed */
+    function _loadTags(){
+      if(window._tagsLoaded)return;window._tagsLoaded=1;
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W6VC3VMZ');
+      /* Microsoft Clarity: a pagina atual da Ethicus nao tem Clarity instalado. Para ativar, cole o ID do projeto entre as aspas */
+      var CLARITY_ID = '';
+      if (CLARITY_ID) (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",CLARITY_ID);
+    }
+    ['mousemove','pointerdown','touchstart','scroll','keydown','click'].forEach(function(e){window.addEventListener(e,_loadTags,{once:true,passive:true});});
   </script>
   <style>
+    /* fontes servidas localmente (subset latin): sem CSS externo bloqueando a renderizacao */
+    @font-face { font-family: 'Manrope'; font-style: normal; font-weight: 400 700; font-display: swap; src: url(fonts/manrope-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Montserrat'; font-style: normal; font-weight: 500 700; font-display: swap; src: url(fonts/montserrat-latin.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* paleta da Ethicus: verde escuro da logo (#1F4433) e variacoes, no lugar do turquesa do template */
     :root {
-      --marca: #1F4433;            /* verde escuro da logo */
-      --marca-claro: #2E6349;
-      --verde-suave: #EDF3EF;
-      --laranja: #EF6C31;          /* laranja da logo */
-      --laranja-claro: #FF9A5B;
-      --laranja-escuro: #C4501C;
-      --creme: #FBF1E8;            /* fundo da logo */
-      --prata: #7A8A80;
-      --gradiente: linear-gradient(135deg, #0E2019 0%, #1F4433 55%, #2E6349 100%);
-      --gradiente-verde: linear-gradient(135deg, #4E9B72 0%, #2E6349 45%, #16352A 100%);
-      --gradiente-verde-claro: linear-gradient(135deg, #B6EFD1 0%, #7FD6A8 45%, #4FB482 100%);
-      --verde-wpp: #25D366;
-      --verde-wpp-hover: #1DA851;
-      --texto: #12211A;
-      --cinza: #64716A;
-      --cinza-claro: #F5F2EC;
-      --borda: #E5DED3;
-      --branco: #fff;
-      --preto: #0E2019;
+      --c-white: #FFFFFF;
+      --c-soft: #EEF5F1;
+      --c-pill: #F2F7F4;
+      --c-ink: #12211A;
+      --c-body: #5C6A63;
+      --c-line: #C9DCD1;
+      --c-border: #D5E6DC;
+      --c-muted: #3D7A5A;
+      --c-readmore: #DDEEE4;
+      --c-footer: #10261C;
+      --c-brand: #1F4433;
+      --c-logo: #3E8C63;
+      --c-light: #9FE3BE;
+      --c-lima: #9FE3BE;
+      --c-trilho: #DCEAE2;
+      --c-logo-bg: #FFF2E6;
+      --c-laranja: #FF7C32;
+      --wpp: #25D366;
+      --f: 'Manrope', system-ui, sans-serif;
+      --f2: 'Montserrat', system-ui, sans-serif;
+      --ease: cubic-bezier(.2, .7, .2, 1);
     }
 
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
-      text-size-adjust: 100%;
-    }
-
-    html, body {
-      width: 100%;
-      max-width: 100%;
-      overflow-x: hidden;
-      overscroll-behavior-x: none;
-    }
-
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; touch-action: pan-y; overflow-x: hidden; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      color: var(--texto);
-      background: var(--branco);
-      -webkit-font-smoothing: antialiased;
-      position: relative;
-      touch-action: pan-y;
-    }
-
-    /* TOPO */
-    .topo {
-      background: var(--gradiente);
-      color: rgba(255,255,255,0.95);
-      text-align: center;
-      padding: 9px 20px;
-      font-size: 13px;
-      font-weight: 500;
-    }
-    .topo strong { color: #9FE3BE; }
-
-    .topo-dot {
-      display: inline-block;
-      width: 7px; height: 7px;
-      background: #25D366;
-      border-radius: 50%;
-      margin-right: 8px;
-      vertical-align: middle;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50%      { opacity: 0.4; }
-    }
-
-    /* botao compacto (rodape) */
-    .nav-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--verde-wpp);
-      color: white;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .nav-btn:hover { background: var(--verde-wpp-hover); transform: translateY(-1px); }
-    .nav-btn svg { width: 16px; height: 16px; fill: white; flex-shrink: 0; }
-
-    /* HERO */
-    .hero {
-      min-height: calc(100svh - 33px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 0 72px;
-      position: relative;
-      overflow: hidden;
-      background: var(--branco);
-    }
-
-    /* faixa de imagem no topo do hero, com a base curvada */
-    .hero-banner-wrap {
-      width: 100%;
-      margin-bottom: 24px;
-      padding-bottom: 2px;
-      background: linear-gradient(90deg, #4E9B72 0%, #16352A 50%, #4E9B72 100%);
-      border-radius: 0 0 50% 50% / 0 0 82px 82px;
-      flex-shrink: 0;
-    }
-
-    .hero-banner {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      border-radius: 0 0 50% 50% / 0 0 80px 80px;
-      overflow: hidden;
-      background: var(--cinza-claro);
-    }
-    .hero-banner picture { display: contents; }
-    .hero-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-
-    .hero-content {
-      padding: 0 24px;
-      margin: auto 0;
-      position: relative;
-      z-index: 2;
-      max-width: 660px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .hero-logo {
-      width: 108px; height: 108px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 32px rgba(14,32,25,0.20);
-      background: var(--creme);
-      padding: 4px;
-      flex-shrink: 0;
-    }
-
-    .hero-logo img {
-      width: 100%; height: 100%;
-      object-fit: contain;
-    }
-
-    .hero-clinica-nome {
+      font-family: var(--f);
       font-size: 12px;
-      font-weight: 700;
-      color: var(--prata);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .hero h1 {
-      font-size: 46px;
-      font-weight: 900;
-      color: var(--texto);
-      letter-spacing: -1.5px;
-      line-height: 1.14;
-      margin-bottom: 18px;
-      margin-top: 4px;
-    }
-
-    .br-mob { display: none; }
-
-    .hero h1 .h1-destaque {
-      background: var(--gradiente-verde);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-
-    .hero-rating {
-      font-size: 18px;
-      font-weight: 600;
-      line-height: 1.4;
-      color: var(--cinza);
-      margin-bottom: 40px;
-    }
-
-    .hero-btns {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 10px;
+      line-height: 16px;
+      color: var(--c-ink);
+      background: #fff;
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
       width: 100%;
-      max-width: 420px;
     }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    [hidden] { display: none !important; }
+    svg.i { display: block; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    svg.i-wpp { display: block; flex-shrink: 0; fill: currentColor; }
+    section, header { scroll-margin-top: 12px; }
 
+    /* ── ANIMACOES DE ENTRADA ── */
+    @keyframes sobe { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+    /* o hero ja nasce pintado (sem fade): so assenta a escala, sem atrasar LCP nem Speed Index */
+    @keyframes surge { from { transform: scale(1.04); } to { transform: none; } }
+    @keyframes flutua { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .js .rv:not(.vis) { opacity: 0; }
+    .rv.vis { animation: sobe .8s var(--ease) var(--d, 0s) backwards; }
+    .rv.vis.ok { animation: none; }
+
+    /* ── BOTOES DE WHATSAPP: brilho no hover ── */
     .btn-wpp {
-      display: inline-flex;
+      position: relative;
+      overflow: hidden;
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      background: var(--verde-wpp);
-      color: white;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
-      padding: 16px 24px;
+      background: var(--wpp);
+      color: #fff;
       border-radius: 999px;
-      text-decoration: none;
-      width: 100%;
-      transition: all 0.2s;
-      box-shadow: 0 4px 18px rgba(37,211,102,0.40);
+      transition: box-shadow .35s var(--ease), transform .35s var(--ease), filter .35s;
     }
-    .btn-wpp:hover { background: var(--verde-wpp-hover); transform: translateY(-2px); }
-    .btn-wpp svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
-
-    .hero-resposta {
-      font-size: 13px;
-      color: var(--cinza);
-      font-weight: 500;
-      text-align: center;
-    }
-
-    /* STATS */
-    .stats {
-      background: var(--gradiente);
-      padding: 28px 48px;
-    }
-
-    .stats-marquee {
-      overflow: hidden;
-      -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-      mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-    }
-
-    .stats-track {
-      display: flex;
-      width: max-content;
-      animation: statsPassando 40s linear infinite;
-    }
-
-    @keyframes statsPassando {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .stats-track { animation: none; }
-    }
-
-    .stat {
-      flex: 0 0 auto;
-      min-width: 260px;
-      text-align: center;
-      padding: 8px 28px;
-      border-right: 1px solid rgba(255,255,255,0.18);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .stat-num   { font-size: 26px; font-weight: 900; color: var(--branco); letter-spacing: -1px; }
-    .stat-label { font-size: 12px; color: rgba(255,255,255,0.78); margin-top: 4px; font-weight: 500; }
-
-    /* DEPOIMENTOS */
-    .sec-depoi {
-      background: var(--branco);
-      padding: 88px 0;
-      border-bottom: 1px solid var(--borda);
-    }
-
-    .sec-depoi-inner { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
-
-    .carrossel-wrap {
-      position: relative;
-      margin-top: 48px;
-      overflow: hidden;
-    }
-
-    .carrossel-track {
-      display: flex;
-      transition: transform 0.4s ease;
-      cursor: grab;
-      user-select: none;
-    }
-    .carrossel-track.dragging { cursor: grabbing; transition: none; }
-
-    .carrossel-slide {
-      flex: 0 0 100%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 0 48px;
-    }
-
-    .review-img-card {
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .review-img-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 20px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-      display: block;
-      pointer-events: none;
-    }
-
-    .carrossel-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .carrossel-btn {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: white;
-      border: 1.5px solid var(--borda);
-      color: var(--marca);
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .carrossel-btn:hover { background: var(--verde-suave); }
-
-    .carrossel-dots { display: flex; gap: 6px; }
-
-    .carrossel-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #D6D0C4;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .carrossel-dot.ativo { background: var(--marca); }
-
-    .sec-titulo.depoi-titulo { font-size: 38px; margin-bottom: 14px; }
-
-    /* SEÇÕES GERAIS */
-    .sec {
-      padding: 88px 48px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .sec-tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--prata);
-      text-transform: uppercase;
-      letter-spacing: 2.5px;
-      margin-bottom: 12px;
-    }
-
-    .sec-titulo {
-      font-size: 36px;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-      line-height: 1.2;
-      margin-bottom: 14px;
-    }
-
-    .sec-titulo span {
-      background: var(--gradiente-verde);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .sec-sub {
-      font-size: 15px;
-      color: var(--cinza);
-      line-height: 1.6;
-      max-width: 620px;
-      margin-bottom: 40px;
-    }
-
-    .sec-header { text-align: center; }
-    .sec-header .sec-titulo { max-width: 780px; margin-left: auto; margin-right: auto; }
-    .sec-header .sec-sub { margin-left: auto; margin-right: auto; }
-
-    /* SERVIÇOS */
-    .servicos-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .servico-card {
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      border-radius: 20px;
-      padding: 26px 22px;
-      transition: all 0.2s;
-    }
-
-    .servico-card:hover {
-      background: var(--verde-suave);
-      border-color: #C9E0D3;
-      transform: translateY(-3px);
-    }
-
-    .servico-icone {
-      width: 44px; height: 44px;
-      background: var(--gradiente);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
-
-    .servico-icone svg {
-      width: 22px; height: 22px;
-      stroke: var(--branco);
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .servico-card h3 { font-size: 15px; font-weight: 800; line-height: 1.4; color: var(--marca); }
-    .servico-card p  { font-size: 13px; color: var(--cinza); margin-top: 6px; line-height: 1.5; }
-
-    /* GALERIA */
-    .sec-galeria { background: var(--branco); padding: 88px 0; }
-    .sec-galeria-inner { max-width: 1440px; margin: 0 auto; padding: 0 48px; }
-
-    .galeria-carrossel {
-      display: flex;
-      gap: 14px;
-      margin-top: 8px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      touch-action: pan-x pan-y;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      cursor: grab;
-    }
-    .galeria-carrossel::-webkit-scrollbar { display: none; }
-    .galeria-carrossel.arrastando { cursor: grabbing; scroll-behavior: auto; }
-    .galeria-carrossel.arrastando img { pointer-events: none; }
-
-    .galeria-item {
-      flex: 0 0 calc((100% - 56px) / 5);
-      aspect-ratio: 2 / 3;
-      scroll-snap-align: start;
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      background: var(--cinza-claro);
-      border: 1px solid var(--borda);
-    }
-    .galeria-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
-    }
-    .galeria-item::after {
+    .btn-wpp::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(14,32,25,0.35), rgba(14,32,25,0) 55%);
-      opacity: 0;
-      transition: opacity 0.35s ease;
+      top: 0; bottom: 0;
+      left: -60%;
+      width: 40%;
+      background: linear-gradient(100deg, transparent, rgba(255,255,255,.5), transparent);
+      transform: skewX(-20deg);
+      transition: left .8s var(--ease);
       pointer-events: none;
     }
-    .galeria-item:hover img { transform: scale(1.07); }
-    .galeria-item:hover::after { opacity: 1; }
-
-
-    /* CTA */
-    .sec-cta-wrap { background: var(--gradiente); }
-
-    .sec-cta {
-      padding: 88px 48px;
-      text-align: center;
-      max-width: 660px;
-      margin: 0 auto;
+    .btn-wpp:hover {
+      filter: brightness(1.06);
+      box-shadow: 0 0 0 5px rgba(37,211,102,.18), 0 12px 34px rgba(37,211,102,.55);
+      transform: translateY(-1px);
     }
+    .btn-wpp:hover::after { left: 130%; }
+    .btn-wpp.abrindo { filter: brightness(.96); }
 
-    .sec-cta h2 {
-      font-size: 38px;
-      font-weight: 900;
-      letter-spacing: -1px;
-      line-height: 1.15;
-      margin-bottom: 14px;
-      color: #ffffff;
+    /* ── HERO (mobile) ── */
+    .hero {
+      position: relative;
+      height: 844px;
+      overflow: clip;
+      background: linear-gradient(170deg, #0F2A1F 0%, #1F4433 35%, #3E8C63 70%, #58A57D 100%);
+      background: linear-gradient(in oklab 170deg, #0F2A1F 0%, #1F4433 35%, #3E8C63 70%, #58A57D 100%);
     }
-
-    .sec-cta h2 span {
-      background: var(--gradiente-verde-claro);
+    .hero-palco { position: relative; height: 100%; display: flex; flex-direction: column; }
+    .hero-arco {
+      position: absolute;
+      right: 0;
+      bottom: 96px;
+      width: 350px;
+      height: 330px;
+      background: #FFFFFF12;
+      border-radius: 175px 175px 0 0;
+    }
+    .hero-gigante {
+      position: absolute;
+      right: 14px;
+      bottom: 250px;
+      width: 363px;
+      height: 137px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      pointer-events: none;
+      animation: surge 1.2s var(--ease) .2s backwards;
+    }
+    .hero-gigante span { display: inline-block; padding-right: 6px; }
+    .hero-gigante b {
+      display: inline-block;
+      font-weight: 400;
+      letter-spacing: -0.075em;
+      line-height: 62px;
+      white-space: nowrap;
+      background: linear-gradient(180deg, rgba(255,255,255,.95) 35%, rgba(255,255,255,.05) 100%);
+      background: linear-gradient(in oklab 180deg, rgba(255,255,255,.95) 35%, rgba(255,255,255,.05) 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-
-    .sec-cta-texto {
-      font-size: 15px;
-      line-height: 1.6;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 32px;
+    .hero-gigante .g1 b { font-size: 103px; }
+    .hero-gigante .g2 b { font-size: 62px; }
+    .hero-cao {
+      position: absolute;
+      right: -58px;
+      bottom: -3px;
+      width: 676px;
+      height: 382px;
+      max-width: none;
+      object-fit: cover;
+      animation: surge 1.1s var(--ease) backwards;
     }
-
-    /* LOCALIZAÇÃO */
-    .sec-local { background: #ECECEC; padding: 88px 48px; }
-
-    .sec-local-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .info-box {
-      background: white;
-      border-radius: 20px;
-      padding: 28px;
-      margin-top: 32px;
+    .hero-barra {
+      position: relative;
+      height: 35px;
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      border: 1px solid var(--borda);
+      align-items: flex-end;
+      justify-content: center;
+      gap: 14px;
+      padding: 0 16px 12px;
     }
+    .hero-barra div { display: flex; align-items: center; gap: 6px; color: #fff; font-size: 11px; font-weight: 500; line-height: 14px; }
+    .hero-barra svg { width: 12px; height: 12px; }
 
-    .info-linha { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--cinza); line-height: 1.5; }
-    .info-linha .ico { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-    .info-linha strong { color: var(--texto); display: block; }
-
-    .mapa { border-radius: 24px; overflow: hidden; height: 340px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); background: var(--creme); }
-    .mapa iframe { width: 100%; height: 100%; border: none; display: block; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--borda);
-      padding: 32px 48px;
+    .nav-wrap { position: relative; z-index: 5; padding: 0 16px; }
+    .nav {
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+      padding: 0 10px 0 12px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px #10261C1F;
     }
-
-    .footer-logo {
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--marca);
-      letter-spacing: -0.5px;
-    }
-
-    .footer-texto { font-size: 13px; color: var(--cinza); }
-    .footer-texto strong { color: var(--texto); }
-
-    /* CARD DE MENSAGEM */
-    .card-msg {
-      position: fixed;
-      right: 28px;
-      bottom: 98px;
-      z-index: 998;
-      width: 300px;
-      max-width: calc(100vw - 40px);
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      border-radius: 18px;
-      box-shadow: 0 12px 34px rgba(14,32,25,0.20);
-      opacity: 0;
-      transform: translate(18px, 26px) scale(0.55);
-      transform-origin: calc(100% - 26px) 100%;
-      transition: opacity 0.28s ease, transform 0.38s cubic-bezier(0.22, 1.2, 0.36, 1);
-      pointer-events: none;
-    }
-    .card-msg.visivel { opacity: 1; transform: none; pointer-events: auto; }
-
-    /* rabinho do balão, apontando para o botão do WhatsApp */
-    .card-msg::after {
-      content: '';
-      position: absolute;
-      right: 22px;
-      bottom: -8px;
-      width: 16px; height: 16px;
-      background: var(--branco);
-      border-right: 1px solid var(--borda);
-      border-bottom: 1px solid var(--borda);
-      border-bottom-right-radius: 4px;
-      transform: rotate(45deg);
-    }
-    .card-msg.fechado { display: none; }
-
-    .card-msg-link {
-      display: flex;
-      align-items: flex-start;
-      gap: 11px;
-      padding: 14px 34px 15px 14px;
-      text-decoration: none;
-    }
-
-    .card-msg-logo {
+    .logo { display: flex; align-items: center; gap: 8px; }
+    .logo-ic { width: 36px; height: 36px; border-radius: 9px; background: var(--c-logo-bg); overflow: hidden; flex-shrink: 0; }
+    .logo-ic img { width: 100%; height: 100%; object-fit: cover; }
+    .logo-nome { display: flex; flex-direction: column; font-size: 13px; font-weight: 700; letter-spacing: -0.02em; line-height: 14px; color: var(--c-ink); }
+    .nav-menu, .nav-acoes-d { display: none; }
+    .nav-acoes-m { display: flex; align-items: center; gap: 8px; }
+    .nav-circ {
       width: 40px; height: 40px;
       border-radius: 50%;
-      overflow: hidden;
-      background: var(--creme);
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
+      transition: transform .3s var(--ease), box-shadow .3s;
     }
-    .card-msg-logo img { width: 100%; height: 100%; object-fit: contain; }
-
-    .card-msg-corpo { min-width: 0; }
-
-    .card-msg-nome {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12.5px;
-      font-weight: 800;
-      color: var(--marca);
-      margin-bottom: 3px;
-    }
-    .card-msg-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--verde-wpp);
-      animation: pulse 2s infinite;
-    }
-
-    .card-msg-texto {
-      display: block;
-      font-size: 13.5px;
-      line-height: 1.45;
-      color: var(--texto);
-      font-weight: 500;
-    }
-
-    .card-msg-fechar {
+    .nav-circ svg { width: 18px; height: 18px; }
+    .nav-circ--wpp { background: var(--wpp); color: #fff; }
+    .nav-circ--menu { background: var(--c-pill); color: var(--c-ink); }
+    .nav-circ:hover { transform: translateY(-1px); }
+    .menu-m {
       position: absolute;
-      top: 7px; right: 9px;
-      width: 22px; height: 22px;
-      border: none;
-      background: none;
-      color: var(--cinza);
-      font-size: 19px;
-      line-height: 1;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-    .card-msg-fechar:hover { background: var(--cinza-claro); color: var(--texto); }
-
-    /* FLUTUANTE */
-    .wpp-float {
-      position: fixed;
-      bottom: 28px; right: 28px;
-      width: 58px; height: 58px;
-      background: var(--verde-wpp);
-      border-radius: 50%;
+      left: 16px; right: 16px;
+      top: calc(100% + 8px);
       display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 8px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 16px 40px #10261C29;
+    }
+    .menu-m a { padding: 14px 16px; border-radius: 10px; font-size: 15px; font-weight: 500; line-height: 20px; color: var(--c-ink); }
+    .menu-m a.ativo, .menu-m a:hover { background: var(--c-pill); }
+
+    .hero-texto {
+      position: relative;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.45);
-      text-decoration: none;
-      z-index: 999;
-      transition: all 0.2s;
+      gap: 18px;
+      padding: 36px 16px 0;
     }
-    .wpp-float:hover { transform: scale(1.1); }
-    .wpp-float svg { width: 28px; height: 28px; fill: white; }
+    .hero-h1 {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 46px;
+      color: #fff;
+    }
+    /* linha de destaque em verde-menta, que sobre o verde escuro faz o papel do ciano do template */
+    .hero-h1 .l2 { color: var(--c-lima); }
+    /* "24h" no laranja da logo; o halo escuro descola o laranja do verde do fundo */
+    .hero-h1 .h24 { color: var(--c-laranja); text-shadow: 0 2px 4px rgba(0,0,0,.22), 0 4px 20px rgba(0,0,0,.42); }
+    .hero-h1 .l3 { font-weight: 500; }
+    .hero-sub { width: 330px; max-width: 100%; text-wrap: pretty; text-align: center; font-size: 14px; font-weight: 500; line-height: 22px; color: #fff; }
+    .hero-cta { width: 324px; max-width: 100%; height: 56px; gap: 10px; margin-top: 6px; box-shadow: 0 10px 26px #25D36659; }
+    .hero-cta .lbl { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; line-height: 14px; }
+    .hero-cta svg { width: 18px; height: 18px; }
 
-    @media (min-width: 901px) {
-      .hero h1 { max-width: 620px; margin-left: auto; margin-right: auto; }
+    /* ── HERO CARDS ── */
+    .hero-cards { position: relative; z-index: 3; display: flex; flex-direction: column; gap: 12px; width: 272px; margin: -37px auto 0; }
+    .hc {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 20px 18px 22px 20px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 30px #10261C1A;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .hc:nth-child(3) { display: none; }
+    .hc-txt { display: flex; flex-direction: column; gap: 10px; }
+    .hc-n { font-size: 12px; font-weight: 600; line-height: 14px; color: var(--c-brand); }
+    .hc-d { font-size: 15px; font-weight: 500; line-height: 21px; color: var(--c-ink); }
+    /* cada texto fica sempre em 2 linhas, como na prancheta */
+    .hc-d span { display: block; white-space: nowrap; }
+    .hc-ic { width: 44px; height: 44px; border-radius: 12px; background: var(--c-logo); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hc-ic svg { width: 20px; height: 20px; }
+    .hc:hover { transform: translateY(-4px); box-shadow: 0 16px 38px #10261C26; }
+
+    /* ── CARROSSEIS (avaliacoes e etapas) ── */
+    .sec-car { --pl: 16px; display: flex; flex-direction: column; gap: 28px; overflow: clip; }
+    .sec-aval { padding-top: 29px; }
+    .sec-etapas { padding-top: 88px; gap: 26px; }
+    .car-cab { display: flex; flex-direction: column; gap: 12px; margin: 0 var(--pl); }
+    .car-tag { font-size: 16px; line-height: 20px; color: var(--c-brand); }
+    .car-dir { display: flex; flex-direction: column; gap: 12px; }
+    .car-h2 { display: flex; font-size: 30px; font-weight: 500; letter-spacing: -0.03em; line-height: 36px; color: var(--c-ink); }
+    .car-h2 .c { color: var(--c-brand); }
+    .sec-aval .car-h2 { gap: 8px; }
+    .sec-etapas .car-h2 { flex-direction: column; font-size: 26px; line-height: 32px; }
+    .car-p { font-size: 14px; line-height: 22px; color: var(--c-body); }
+    .car-track {
+      position: relative;
+      overflow: hidden;
+      padding: 12px 0 30px var(--pl);
+      margin: -12px 0 -30px;
+      cursor: grab;
+      touch-action: pan-y;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .car-track.arrastando { cursor: grabbing; }
+    .car-fita { display: flex; gap: 12px; width: max-content; will-change: transform; }
+    .car-fita > * { flex-shrink: 0; }
+    .car-track img { -webkit-user-drag: none; pointer-events: none; }
+    .car-prog { position: relative; height: 4px; margin: 0 var(--pl); background: var(--c-trilho); border-radius: 4px; overflow: hidden; }
+    .car-prog span { position: absolute; left: 0; top: 0; height: 100%; width: 20.1%; background: var(--c-logo); border-radius: 4px; will-change: transform; }
+    .sec-etapas .car-prog span { width: 25.1%; }
+
+    .av {
+      width: 270px;
+      padding: 8px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px #10261C14;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .av img { width: 254px; height: 319px; border-radius: 12px; object-fit: cover; }
+
+    .et {
+      width: 272px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 8px 8px 24px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px #10261C14;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .et-img { position: relative; height: 160px; border-radius: 14px; overflow: hidden; }
+    .et-img img { width: 100%; height: 100%; object-fit: cover; }
+    .et-n {
+      position: absolute; left: 14px; top: 14px;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: #fff; border-radius: 9px;
+      font-size: 11px; font-weight: 500; line-height: 14px; color: var(--c-brand);
+    }
+    .et-txt { display: flex; flex-direction: column; gap: 8px; padding: 0 12px; }
+    .et h3 { font-size: 16px; font-weight: 500; line-height: 22px; color: var(--c-ink); }
+    .et p { font-size: 13px; line-height: 21px; color: var(--c-body); }
+    .av:hover, .et:hover { transform: translateY(-4px); box-shadow: 0 16px 36px #10261C1F; }
+
+    /* ── DESTAQUES ── */
+    .sec-dest { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 80px 16px 72px; background: #fff; }
+    .dest-cab { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .selo {
+      display: flex; align-items: center; gap: 7px;
+      padding: 6px 14px;
+      border: 1px solid #BCD8C8; border-radius: 999px;
+      font-size: 11px; font-weight: 500; line-height: 14px; color: var(--c-ink);
+    }
+    .selo svg { width: 12px; height: 12px; color: var(--c-brand); }
+    .dest-h2 { display: flex; flex-direction: column; align-items: center; text-align: center; font-size: 26px; font-weight: 500; letter-spacing: -0.045em; line-height: 32px; color: var(--c-ink); }
+    .dest-cards { display: flex; flex-direction: column; gap: 14px; width: 100%; }
+    .dc {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      border: 1.5px solid var(--c-border);
+      border-radius: 12px;
+      overflow: clip;
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .dc-img { width: 100%; height: 190px; object-fit: cover; }
+    .dc-img--exames { object-position: 50% 22%; }
+    .dc-img--consultas { object-position: 50% 55%; }
+    .dc-img--cirurgia { object-position: 50% 35%; }
+    .dc-body { position: relative; display: flex; flex-direction: column; gap: 14px; padding: 18px 18px 20px 20px; }
+    .dc-tag {
+      align-self: flex-start;
+      padding: 6px 12px;
+      background: #fff;
+      border: 1px solid var(--c-muted); border-radius: 999px;
+      font-size: 11px; font-weight: 500; line-height: 13px; color: var(--c-muted);
+    }
+    .dc-main { display: flex; align-items: flex-end; justify-content: space-between; }
+    .dc--desc .dc-main { flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 14px; }
+    .dc h3 { display: flex; flex-direction: column; font-size: 21px; font-weight: 500; letter-spacing: -0.02em; line-height: 28px; color: var(--c-ink); }
+    .dc-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+    .dc-row p { flex: 1; min-width: 0; font-size: 13px; line-height: 21px; color: var(--c-body); }
+    .dc-seta {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--c-pill); border-radius: 8px;
+      color: var(--c-brand);
+      flex-shrink: 0;
+      transition: background .3s, color .3s;
+    }
+    .dc-seta svg { width: 14px; height: 14px; stroke-width: 2.4; }
+    .dc:hover { transform: translateY(-4px); box-shadow: 0 16px 36px #10261C1A; }
+    .dc:hover .dc-seta { background: var(--c-brand); color: #fff; }
+
+    /* ── SERVICOS ── */
+    .sec-serv { display: flex; flex-direction: column; align-items: center; padding-bottom: 64px; background: var(--c-soft); }
+    .serv-titulo { position: relative; width: 100%; height: 150px; overflow: clip; flex-shrink: 0; }
+    .serv-palco { position: absolute; left: 50%; top: 0; width: 390px; height: 100%; transform: translateX(-50%); }
+    .serv-gigante {
+      position: absolute;
+      left: 0; right: 0;
+      top: 26px;
+      text-align: center;
+      font-size: 112px;
+      font-weight: 400;
+      letter-spacing: -0.075em;
+      line-height: 112px;
+      background: linear-gradient(180deg, #1F4433 38%, rgba(31,68,51,0) 80%);
+      background: linear-gradient(in oklab 180deg, #1F4433 38%, rgba(31,68,51,0) 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .serv-pill { display: none; }
+    .serv-sub { max-width: 390px; padding: 0 24px 32px; text-align: center; font-size: 20px; font-weight: 500; letter-spacing: -0.03em; line-height: 28px; color: var(--c-ink); }
+    .serv-sub span { display: inline; }
+    .serv-lista { display: flex; flex-direction: column; width: calc(100% - 32px); border-top: 2px solid var(--c-line); }
+    .sr {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      column-gap: 12px;
+      align-items: center;
+      padding: 22px 0;
+      border-bottom: 2px solid var(--c-line);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* foto escondida: no mobile abre para cima ao tocar e empurra o texto para baixo */
+    .sr-midia {
+      grid-column: 1 / -1;
+      display: block;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      outline: 2px solid transparent;
+      transition: height .55s var(--ease), margin .55s var(--ease), outline-color .3s;
+    }
+    .sr-midia img { width: 100%; height: 150px; object-fit: cover; opacity: 0; transform: scale(1.08); transition: opacity .45s var(--ease), transform .7s var(--ease); }
+    .sr.aberto .sr-midia { height: 150px; margin-bottom: 16px; outline-color: #BCD8C8; }
+    .sr.aberto .sr-midia img { opacity: 1; transform: none; }
+    .sr-info { flex: 1; min-width: 0; display: grid; grid-template-columns: 18px 1fr; column-gap: 8px; row-gap: 8px; align-items: center; }
+    .sr-ic { display: flex; width: 18px; color: var(--c-muted); }
+    .sr-ic svg { width: 16px; height: 16px; }
+    .sr-nome { font-size: 30px; font-weight: 500; letter-spacing: -0.045em; line-height: 36px; color: var(--c-ink); transition: color .35s var(--ease); }
+    .sr-desc { grid-column: 2; font-size: 13px; line-height: 20px; color: var(--c-body); }
+    .sr-btn {
+      width: 92px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      background: var(--c-readmore); border-radius: 999px;
+      font-size: 12px; font-weight: 600; line-height: 14px; color: var(--c-brand);
+      transition: background .3s, color .3s, box-shadow .3s;
+    }
+    /* estado aberto = a linha em destaque da prancheta (nome na cor da marca e botao escuro) */
+    .sr.aberto .sr-nome { color: var(--c-brand); }
+    .sr.aberto .sr-btn { background: var(--c-brand); color: #fff; box-shadow: 0 8px 20px #1F443340; }
+
+    /* ── CARDS CAES E GATOS ── */
+    .sec-pets { display: flex; flex-direction: column; gap: 14px; padding: 12px 16px 0; background: #fff; }
+    .pc { position: relative; height: 460px; border-radius: 12px; overflow: clip; isolation: isolate; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+    .pc--caes {
+      background: linear-gradient(135deg, #1F4433 0%, #3E8C63 55%, #BFE3CE 100%);
+      background: linear-gradient(in oklab 135deg, #1F4433 0%, #3E8C63 55%, #BFE3CE 100%);
+    }
+    .pc--gatos {
+      background: linear-gradient(135deg, #58A57D 0%, #2E6E4E 55%, #0F2A1F 100%);
+      background: linear-gradient(in oklab 135deg, #58A57D 0%, #2E6E4E 55%, #0F2A1F 100%);
+    }
+    .pc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 12px; transition: transform 1s var(--ease); }
+    .pc-gigante {
+      position: absolute;
+      top: -44px;
+      right: -20px;
+      font-size: 130px;
+      font-weight: 400;
+      letter-spacing: -0.075em;
+      line-height: 130px;
+      background: linear-gradient(180deg, rgba(255,255,255,.9) 45%, rgba(255,255,255,0) 75%);
+      background: linear-gradient(in oklab 180deg, rgba(255,255,255,.9) 45%, rgba(255,255,255,0) 75%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      pointer-events: none;
+    }
+    .pc--gatos .pc-gigante { right: -24px; }
+    .pc-vidro {
+      position: absolute;
+      left: 6px; right: 6px; bottom: 6px;
+      height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 20px 20px 22px;
+      border: 1px solid #FFFFFF40;
+      border-radius: 10px;
+      transition: transform .35s var(--ease);
+    }
+    .pc--caes .pc-vidro {
+      background: linear-gradient(90deg, rgba(15,42,31,.5) 0%, rgba(62,140,99,.42) 55%, rgba(191,227,206,.5) 100%);
+      background: linear-gradient(in oklab 90deg, rgba(15,42,31,.5) 0%, rgba(62,140,99,.42) 55%, rgba(191,227,206,.5) 100%);
+    }
+    .pc--gatos .pc-vidro {
+      background: linear-gradient(90deg, rgba(12,34,25,.5) 0%, rgba(88,165,125,.42) 55%, rgba(205,234,217,.5) 100%);
+      background: linear-gradient(in oklab 90deg, rgba(12,34,25,.5) 0%, rgba(88,165,125,.42) 55%, rgba(205,234,217,.5) 100%);
+    }
+    .pc-tag {
+      align-self: flex-start;
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 12px;
+      border: 1px solid #FFFFFFBF; border-radius: 999px;
+      font-size: 11px; font-weight: 500; line-height: 13px; color: #fff;
+    }
+    .pc-tag svg { width: 11px; height: 11px; }
+    .pc-baixo { display: flex; align-items: flex-end; justify-content: space-between; }
+    .pc-h3 { display: flex; flex-direction: column; font-size: 22px; font-weight: 500; letter-spacing: -0.03em; line-height: 28px; color: #fff; }
+    .pc-mais {
+      position: absolute; right: 20px; bottom: 22px;
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; line-height: 14px; color: #fff;
+    }
+    .pc-mais svg { width: 12px; height: 12px; stroke-width: 2.2; transition: transform .3s var(--ease); }
+    .pc:hover { box-shadow: 0 18px 40px #10261C26; }
+    .pc:hover .pc-img { transform: scale(1.04); }
+    .pc:hover .pc-vidro { transform: translateY(-3px); }
+    .pc-mais:hover svg { transform: translateX(4px); }
+
+    /* ── CTA FINAL ── */
+    .sec-cta { padding: 110px 16px 0; }
+    .cta-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 186px 20px 20px;
+      background: var(--c-brand);
+      border-radius: 24px;
+    }
+    .cta-mapa {
+      position: absolute;
+      left: 20px; right: 20px; top: -44px;
+      height: 208px;
+      overflow: hidden;
+      background: #3E8C634D;
+      border-radius: 20px;
+      box-shadow: 0 14px 34px #10261C33;
+    }
+    .cta-mapa iframe { display: block; width: 100%; height: 100%; border: 0; }
+    .cta-tag { font-size: 16px; line-height: 20px; color: #fff; }
+    .cta-conteudo { display: flex; flex-direction: column; gap: 14px; }
+    .cta-h2 { display: flex; flex-direction: column; font-size: 26px; font-weight: 500; letter-spacing: -0.02em; line-height: 32px; color: #fff; }
+    .cta-p { font-size: 14px; line-height: 22px; color: #FFFFFFE0; }
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 8px;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 14px 34px #10261C1F;
+    }
+    .cta-campo {
+      display: flex; align-items: center;
+      height: 50px;
+      padding: 0 22px;
+      background: var(--c-pill); border-radius: 999px;
+      font-size: 13px; line-height: 16px; color: var(--c-body);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      transition: background .3s;
+    }
+    .cta-campo:hover { background: #E4F1E9; }
+    .cta-btn { height: 54px; gap: 8px; }
+    .cta-btn .lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; line-height: 14px; }
+    .cta-btn svg { width: 18px; height: 18px; }
+
+    /* ── RODAPE ── */
+    .rodape { padding-top: 24px; }
+    .rod-in {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      padding: 40px 20px 96px;
+      background: var(--c-footer);
+      border-radius: 28px 28px 0 0;
+      color: #fff;
+    }
+    .rod-l1 { display: flex; flex-direction: column; gap: 22px; }
+    .rod-logo { display: flex; align-items: center; gap: 12px; font-size: 19px; font-weight: 600; line-height: 24px; }
+    .rod-logo .ic { width: 42px; height: 42px; border-radius: 50%; background: var(--c-logo-bg); overflow: hidden; flex-shrink: 0; }
+    .rod-logo .ic img { width: 100%; height: 100%; object-fit: cover; }
+    .rod-wpp { display: flex; flex-direction: column; gap: 4px; }
+    .rod-wpp b { font-size: 18px; font-weight: 600; line-height: 24px; transition: color .3s; }
+    .rod-wpp span { font-size: 13px; line-height: 18px; color: #FFFFFFA6; }
+    .rod-wpp:hover b { color: var(--wpp); }
+    .rod-l2 { display: flex; flex-direction: column; gap: 14px; padding-top: 22px; border-top: 1px solid #FFFFFF1F; }
+    .rod-copy { display: flex; flex-direction: column; gap: 4px; font-size: 12px; line-height: 19px; color: #FFFFFF99; }
+    .rod-chegar { font-size: 12px; font-weight: 500; line-height: 18px; color: var(--c-light); transition: color .3s; }
+    .rod-chegar:hover { color: #fff; }
+
+    /* ── BOTAO FLUTUANTE DO WHATSAPP ── */
+    @keyframes pulso { 0% { transform: scale(1); opacity: .55; } 70%, 100% { transform: scale(1.55); opacity: 0; } }
+    .wpp-float {
+      position: fixed;
+      right: 18px;
+      bottom: calc(18px + env(safe-area-inset-bottom));
+      z-index: 50;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 10px 26px #25D36673;
+    }
+    .wpp-float::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--wpp);
+      animation: pulso 2.6s ease-out infinite;
+      z-index: -1;
+    }
+    .wpp-float svg { width: 30px; height: 30px; }
+    .wpp-float.btn-wpp { overflow: visible; transition: opacity .35s var(--ease), transform .45s var(--ease); }
+    .wpp-float.btn-wpp::after { display: none; }
+    /* so aparece depois que o botao verde do hero sai da tela */
+    .js .wpp-float:not(.visivel) { opacity: 0; transform: scale(.6) translateY(16px); pointer-events: none; }
+
+    /* ── TABLET: mantem o layout mobile, com largura contida ── */
+    @media (min-width: 600px) and (max-width: 1023px) {
+      .dest-cards, .serv-lista, .cta-card { max-width: 560px; margin-left: auto; margin-right: auto; }
+      .sec-pets .pc { width: 100%; max-width: 560px; margin: 0 auto; }
     }
 
-    /* desktop mais estreito: reduz a headline para caber em 2 linhas */
-    @media (min-width: 901px) and (max-width: 1200px) {
-      .hero h1 { font-size: 40px; }
+    @media (max-width: 1023px) {
+      .only-d { display: none !important; }
+      /* mobile: hero estatico, sem animar a foto grande (ela e o LCP; a animacao atrasava o Speed Index) */
+      .hero-cao, .hero-gigante { animation: none; }
     }
 
-    /* RESPONSIVO */
-    @media (max-width: 900px) {
+    /* ════════════════ DESKTOP (prancheta 1440) ════════════════ */
+    @media (min-width: 1024px) {
+      .only-m { display: none !important; }
+
+      /* hero */
       .hero {
-        min-height: calc(100svh - 31px);
-        padding: 0 0 56px;
+        height: 870px;
+        background: linear-gradient(100deg, #0F2A1F 0%, #1F4433 30%, #3E8C63 62%, #58A57D 100%);
+        background: linear-gradient(in oklab 100deg, #0F2A1F 0%, #1F4433 30%, #3E8C63 62%, #58A57D 100%);
       }
-      .hero-content { padding: 0 20px; }
-      .hero-banner-wrap { margin-bottom: 18px; border-radius: 0 0 50% 50% / 0 0 38px 38px; }
-      .hero-banner { height: 224px; border-radius: 0 0 50% 50% / 0 0 36px 36px; }
-      .hero-banner img { object-position: center 25%; }
-      .hero h1 { font-size: 38px; letter-spacing: -1px; margin-bottom: 14px; }
-      .br-mob { display: inline; }
-      .br-desk { display: none; }
-      .hero-logo { width: 92px; height: 92px; margin-bottom: 14px; }
-      .hero-rating { font-size: 16px; margin-bottom: 28px; }
-      .hero-btns { max-width: 100%; }
-
-      .stats { padding: 22px 0; }
-      .stat { min-width: 210px; padding: 8px 20px; }
-      .stat-num { font-size: 22px; }
-      .stats-track { animation-duration: 26s; }
-
-      .sec-depoi { padding: 56px 0; }
-      .sec-depoi-inner { padding: 0 20px; text-align: center; }
-      .carrossel-slide { padding: 0 16px; }
-      .review-img-card { max-width: 100%; }
-
-      .sec { padding: 56px 20px; text-align: center; }
-      .sec-titulo { font-size: 26px; }
-      .sec-titulo.depoi-titulo { font-size: 28px; }
-      .sec-sub { margin-left: auto; margin-right: auto; margin-bottom: 32px; }
-
-      .servicos-grid { grid-template-columns: 1fr; gap: 12px; }
-      .servico-card { text-align: center; }
-      .servico-icone { margin-left: auto; margin-right: auto; }
-
-      .sec-galeria { padding: 56px 0; }
-      .sec-galeria-inner { padding: 0 20px; }
-      .galeria-carrossel {
-        gap: 0;
-        padding: 4px 7.5% 34px;
-        scroll-padding: 0 7.5%;
+      .hero-palco { display: block; max-width: 1440px; margin: 0 auto; }
+      .hero-arco { top: 205px; bottom: auto; width: 868px; height: 665px; border-radius: 150px 150px 0 0; }
+      .hero-gigante { top: 104px; bottom: auto; width: 381px; height: auto; }
+      .hero-gigante span { padding-right: 14px; }
+      .hero-gigante .g1 { height: 66px; }
+      .hero-gigante .g2 { height: 136px; }
+      .hero-gigante b { line-height: 170px; }
+      .hero-gigante .g1 b { font-size: 100px; height: 125px; }
+      .hero-gigante .g2 b { font-size: 100px; height: 117px; }
+      .hero-cao { right: -17px; bottom: 2px; width: min(1349px, 93.68vw); height: auto; aspect-ratio: 1349 / 764; }
+      .hero-barra { position: absolute; top: 11px; right: 52px; height: auto; padding: 0; gap: 46px; }
+      .hero-barra div { gap: 8px; }
+      .hero-barra svg { width: 13px; height: 13px; }
+      .nav-wrap { position: absolute; top: 37px; left: 52px; right: 52px; padding: 0; }
+      .nav { height: 75px; padding: 0 16px; }
+      .logo-ic { width: 40px; height: 40px; border-radius: 10px; }
+      .logo-nome { line-height: 13px; }
+      .nav-acoes-m { display: none; }
+      .nav-menu { display: flex; align-items: center; gap: 6px; }
+      .nav-menu a {
+        display: flex; align-items: center;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 12px; font-weight: 500; line-height: 14px; color: var(--c-ink);
+        transition: background .25s;
       }
-      .galeria-item {
-        flex: 0 0 85%;
-        margin: 0 -2%;
-        border-radius: 18px;
-        scroll-snap-align: center;
-        transform-origin: center top;
-        will-change: transform;
+      .nav-menu a.ativo, .nav-menu a:hover { background: var(--c-pill); }
+      .nav-acoes-d { display: flex; align-items: center; justify-content: flex-end; gap: 18px; width: 300px; flex-shrink: 0; }
+      .nav-chat { display: flex; color: var(--c-ink); transition: color .3s, transform .3s var(--ease); }
+      .nav-chat svg { width: 18px; height: 18px; stroke-width: 1.8; }
+      .nav-chat:hover { color: var(--wpp); transform: translateY(-1px); }
+      .nav-btn { width: 132px; height: 44px; }
+      .nav-btn .lbl { font-size: 12px; font-weight: 500; line-height: 14px; }
+      .hero-texto { position: absolute; top: 176px; left: 52px; align-items: flex-start; gap: 44px; padding: 0; }
+      .hero-h1 { align-self: auto; text-align: left; font-size: clamp(52px, 4.72vw, 68px); line-height: 1.0588; }
+      .hero-sub { width: 400px; text-align: left; font-size: 12px; line-height: 24px; }
+      .hero-cta { width: 352px; height: 67px; padding: 20px 34px; margin-top: 10px; }
+      .hero-cta .lbl { font-family: var(--f2); font-size: 14px; letter-spacing: 0.18em; }
+      .hero-cta svg { width: 20px; height: 20px; }
+
+      /* hero cards */
+      .hero-cards { flex-direction: row; gap: 20px; width: min(1120px, calc(100% - 64px)); margin-top: -58px; }
+      .hc { flex: 0 1 360px; padding: 24px 24px 26px 28px; border-radius: 20px; box-shadow: 0 10px 30px #12211A0F; }
+      .hc:nth-child(3) { display: flex; }
+      .hc-txt { gap: 12px; }
+      .hc-n { font-family: var(--f2); font-weight: 500; color: var(--c-brand); }
+      .hc-d { font-family: var(--f2); font-size: 14px; line-height: 20px; color: var(--c-ink); }
+
+      /* carrosseis */
+      .sec-car { --pl: max(140px, calc((100% - 1160px) / 2)); gap: 48px; }
+      .sec-aval { padding-top: 82px; }
+      .sec-etapas { padding-top: 150px; gap: 48px; }
+      .car-cab { flex-direction: row; align-items: flex-start; gap: 0; }
+      .car-tag { width: 50%; flex-shrink: 0; padding-top: 4px; font-size: 20px; line-height: 22px; }
+      .car-dir { gap: 18px; }
+      .car-h2, .sec-etapas .car-h2 { font-size: 36px; letter-spacing: -0.015em; line-height: 44px; }
+      .sec-aval .car-h2 { gap: 11px; }
+      .car-p { width: 460px; max-width: 100%; font-size: 15px; line-height: 24px; }
+      .car-fita { gap: 20px; }
+      .sec-aval .car-prog span, .sec-etapas .car-prog span { width: 37.93%; }
+      .av { width: 370px; padding: 10px; border-radius: 20px; box-shadow: none; }
+      .av img { width: 350px; height: 439px; border-radius: 14px; }
+      .et { width: 370px; gap: 22px; padding: 10px 10px 30px; border-radius: 20px; box-shadow: none; }
+      .et-img { height: 220px; }
+      .et-txt { gap: 12px; padding: 0 18px; }
+
+      /* destaques */
+      .sec-dest { gap: 28px; padding: 108px 15px 97px; }
+      .selo { padding: 5px 14px; font-size: 9px; line-height: 12px; }
+      .selo svg { width: 11px; height: 11px; }
+      .dest-h2 { font-size: 46px; line-height: 56px; }
+      .dest-cards { flex-direction: row; gap: 15px; }
+      .dc { height: 372px; border-radius: 10px; flex: 384 1 0; min-width: 0; }
+      .dc--grande { flex: 571 1 0; }
+      .dc-img { position: absolute; top: 0; right: 0; width: 57.3%; height: 100%; }
+      .dc--grande .dc-img { width: 57.8%; }
+      .dc-img--exames { object-position: 40% 50%; }
+      .dc-img--consultas { object-position: 20% 50%; }
+      .dc-img--cirurgia { object-position: 50% 50%; }
+      .dc-body { height: 100%; justify-content: space-between; padding: 32px 30px 36px; }
+      .dc-tag { font-size: 9px; line-height: 11px; }
+      .dc-main, .dc--desc .dc-main { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 22px; }
+      .dc--desc .dc-main { gap: 16px; }
+      .dc h3 { line-height: 32px; }
+      .dc-row { flex-direction: column; align-items: flex-start; gap: 22px; }
+      .dc-row p { flex: none; width: 201px; font-size: 10px; line-height: 22px; }
+      .dc-seta { width: 32px; height: 32px; border-radius: 6px; }
+      .dc-seta svg { width: 13px; height: 13px; }
+
+      /* servicos */
+      .sec-serv { padding-bottom: 111px; }
+      .serv-titulo { height: 272px; }
+      .serv-palco { width: 1440px; }
+      .serv-gigante {
+        top: 50px;
+        font-size: 250px;
+        line-height: 250px;
+        background: linear-gradient(180deg, #1F4433 38%, rgba(31,68,51,0) 78%);
+        background: linear-gradient(in oklab 180deg, #1F4433 38%, rgba(31,68,51,0) 78%);
+        -webkit-background-clip: text;
+        background-clip: text;
       }
+      /* notificacoes flutuando */
+      .serv-pill {
+        position: absolute;
+        left: 0; top: 0;
+        display: flex;
+        transform-origin: 0 0;
+        padding: 12px 22px;
+        background: #fff;
+        border-radius: 999px;
+        box-shadow: 0 10px 24px #10261C24;
+        font-size: 10px; font-weight: 500; line-height: 12px; color: var(--c-ink);
+        animation: flutua 4.6s ease-in-out infinite;
+      }
+      .serv-pill.p1 { rotate: -30deg; translate: 257px 97.4px; }
+      .serv-pill.p2 { rotate: 20deg; translate: 543px 28.4px; animation-duration: 5.2s; animation-delay: -1.3s; }
+      .serv-pill.p3 { rotate: 20deg; translate: 914px 34.4px; animation-duration: 4.9s; animation-delay: -2.4s; }
+      .serv-pill.p4 { rotate: -45deg; translate: 1134px 194.4px; animation-duration: 5.6s; animation-delay: -.7s; }
+      .serv-sub { max-width: none; padding: 0 0 50px; font-size: 26px; letter-spacing: -0.035em; line-height: 36px; }
+      .serv-sub span { display: block; }
+      .serv-lista { width: 878px; max-width: calc(100% - 64px); }
+      .sr { display: flex; align-items: center; height: 147px; padding: 0; }
+      .sr-info { margin-right: auto; }
+      .sr-btn { margin-left: 24px; }
+      /* no desktop a foto abre na lateral e o texto desliza para a direita */
+      .sr-midia { width: 0; height: 133px; flex-shrink: 0; transition: width .55s var(--ease), margin .55s var(--ease), outline-color .3s; }
+      .sr-midia img { width: 188px; height: 133px; }
+      .sr.aberto .sr-midia { width: 188px; height: 133px; margin: 0 24px 0 0; }
+      .sr-info { flex: none; grid-template-columns: 18px auto; column-gap: 10px; row-gap: 14px; }
+      .sr-ic { grid-row: 1 / span 2; align-self: start; padding-top: 10px; }
+      .sr-nome { font-size: 48px; line-height: 52px; }
+      .sr-desc { font-size: 11px; line-height: 14px; }
+      .sr-btn { width: 110px; height: 44px; font-size: 10px; line-height: 12px; }
 
-      .sec-cta { padding: 56px 20px; }
-      .sec-cta h2 { font-size: 30px; }
+      /* cards caes e gatos */
+      .sec-pets { flex-direction: row; gap: 16px; padding: 12px 15px 0; }
+      .pc { flex: 1 1 0; height: 602px; }
+      .pc-gigante, .pc--gatos .pc-gigante {
+        top: -86px;
+        right: -139px;
+        font-size: 240px;
+        line-height: 240px;
+        background: linear-gradient(180deg, rgba(255,255,255,.9) 45%, rgba(255,255,255,0) 72%);
+        background: linear-gradient(in oklab 180deg, rgba(255,255,255,.9) 45%, rgba(255,255,255,0) 72%);
+        -webkit-background-clip: text;
+        background-clip: text;
+      }
+      .pc-vidro { left: 7px; right: 7px; bottom: 7px; height: 196px; padding: 30px 32px 32px 38px; }
+      .pc-tag { padding: 6px 14px; font-size: 9px; line-height: 11px; }
+      .pc-tag svg { width: 10px; height: 10px; }
+      .pc-h3 { font-size: 32px; letter-spacing: -0.035em; line-height: 44px; }
+      .pc-mais { position: static; gap: 8px; padding-bottom: 8px; font-size: 10px; font-weight: 500; line-height: 12px; }
 
-      .sec-local { padding: 56px 20px; }
-      .sec-local-inner { grid-template-columns: 1fr; gap: 32px; }
-      .sec-local-inner > div:first-child { text-align: center; }
-      .info-box { text-align: left; }
-      .mapa { height: 260px; }
+      /* cta final */
+      .sec-cta { padding: 130px 70px 0; }
+      .cta-card { height: 400px; gap: 0; padding: 64px 0 0 50%; border-radius: 32px; }
+      .cta-mapa { left: 15.385%; right: auto; top: -60px; width: 29.23%; height: 460px; border-radius: 24px; }
+      .cta-tag { position: absolute; left: 70px; top: 64px; font-size: 20px; line-height: 22px; }
+      .cta-conteudo { gap: 18px; padding-right: 40px; }
+      .cta-h2 { font-size: clamp(26px, 2.36vw, 34px); letter-spacing: -0.015em; line-height: 1.235; }
+      .cta-p { width: 430px; max-width: 100%; }
+      .cta-form { position: absolute; left: 70px; right: 70px; bottom: 36px; flex-direction: row; margin: 0; border-radius: 999px; }
+      .cta-campo { flex: 1 1 0; min-width: 0; height: 56px; padding: 0 26px; }
+      .cta-btn { flex: 0 1 420px; height: 56px; gap: 10px; }
+      .cta-btn .lbl { letter-spacing: 0.18em; }
+      .cta-btn svg { width: 20px; height: 20px; }
 
-      footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+      /* rodape */
+      .rod-in { gap: 30px; padding: 54px max(140px, calc((100% - 1160px) / 2)) 40px; border-radius: 32px 32px 0 0; }
+      .rod-l1 { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+      .rod-logo { font-size: 20px; }
+      .rod-wpp { align-items: flex-end; }
+      .rod-wpp span { font-size: 12px; line-height: 16px; }
+      .rod-l2 { flex-direction: row; align-items: flex-end; justify-content: space-between; padding-top: 26px; }
+      .rod-copy { line-height: 18px; }
 
-      .card-msg { right: 20px; bottom: 92px; width: 290px; }
-
-      .wpp-float { width: 62px; height: 62px; bottom: 20px; right: 20px; }
-      .wpp-float svg { width: 30px; height: 30px; }
+      /* botao flutuante no desktop */
+      .wpp-float { right: 28px; bottom: 28px; }
     }
 
-    @media (max-width: 420px) {
-      .hero h1 { font-size: 35px; }
+    /* notebooks estreitos (1024 a 1279): mesmo layout, com folga para o texto nao invadir as fotos */
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      .dc { container-type: inline-size; }
+      .dc-img, .dc--grande .dc-img { width: 42%; }
+      .dc-main, .dc--desc .dc-main { max-width: calc(58cqw - 42px); }
+      .dc h3 { font-size: 17px; line-height: 24px; }
+      .dc-row p { width: auto; }
+      .pc-h3 { font-size: 26px; line-height: 36px; }
+    }
+    .pc-mais, .rod-chegar, .sr-btn { white-space: nowrap; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .rv:not(.vis) { opacity: 1; }
+      .rv.vis, .hero-cao, .hero-gigante, .serv-pill, .wpp-float::before { animation: none; }
+      .btn-wpp::after { display: none; }
     }
   </style>
 </head>
@@ -791,582 +855,611 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W6VC3VMZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- TOPO -->
-<div class="topo">
-  <span class="topo-dot"></span>
-  Atendimento Disponível <strong>Agora</strong>
-</div>
+<!-- ICONES -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></symbol>
+  <symbol id="i-alarme" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M5 3L2 6M22 6l-3-3"/></symbol>
+  <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-cruz" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" stroke-width="2.2"/></symbol>
+  <symbol id="i-frasco" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M17 3a3 3 0 0 0-2.8 4L7 14.2A3 3 0 1 0 9.8 17L17 9.8A3 3 0 1 0 17 3z"/></symbol>
+  <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+  <symbol id="i-esteto" viewBox="0 0 24 24"><path d="M5 3v6a5 5 0 0 0 10 0V3M10 14v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="12" r="2"/></symbol>
+  <symbol id="i-raio" viewBox="0 0 24 24"><path d="M13 2L4.5 13H12l-1 9 8.5-11H13z"/></symbol>
+  <symbol id="i-estrela" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></symbol>
+  <symbol id="i-pulso" viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></symbol>
+  <symbol id="i-wpp" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></symbol>
+</svg>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-banner-wrap">
-    <div class="hero-banner">
+<header class="hero" id="inicio">
+  <div class="hero-palco">
+    <div class="hero-arco"></div>
+    <div class="hero-gigante" aria-hidden="true">
+      <span class="g1"><b>Ethicus</b></span>
+      <span class="g2"><b>24h</b></span>
+    </div>
     <picture>
-      <source media="(max-width: 900px)" srcset="bg-mobile.webp" type="image/webp" />
-      <img src="bg-desktop.webp" alt="Família deitada no chão de casa com o cachorro" decoding="async" loading="eager" width="2400" height="629" />
+      <source media="(min-width:1024px)" srcset="img/hero-cao-1600.webp" width="1600" height="905" />
+      <img class="hero-cao" src="img/hero-cao-1100.webp" width="1100" height="622" alt="Golden retriever" fetchpriority="high" decoding="async" />
     </picture>
-    </div>
-  </div>
 
-  <div class="hero-content">
-    <div class="hero-logo">
-      <img src="logo.webp" alt="Ethicus Hospital Veterinário 24h" decoding="async" loading="eager" width="108" height="108" />
+    <div class="hero-barra">
+      <div><svg class="i"><use href="#i-chat"/></svg>Atendimento disponível agora</div>
+      <div><svg class="i"><use href="#i-alarme"/></svg><span><span class="only-d">Todos os dias: </span>24 horas</span></div>
     </div>
-    <p class="hero-clinica-nome">Ethicus</p>
-    <h1>
-      <span class="h1-destaque">Hospital<br class="br-mob" /> Veterinário 24h</span><br />
-      em São Caetano
-    </h1>
-    <p class="hero-rating">A saúde do seu pet é nossa prioridade!</p>
-    <div class="hero-btns">
-      <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="btn-wpp">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Atendimento Rápido Agora
+
+    <div class="nav-wrap">
+      <nav class="nav" aria-label="Navegação principal">
+        <div class="logo">
+          <span class="logo-ic"><img src="img/logo-96.webp" width="96" height="96" alt="Logo Ethicus Hospital Veterinário" /></span>
+          <span class="logo-nome"><span>Ethicus</span><span>Hospital Veterinário</span></span>
+        </div>
+        <div class="nav-menu">
+          <a href="#inicio" class="ativo">Início</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#avaliacoes">Avaliações</a>
+          <a href="#contato">Contato</a>
+        </div>
+        <div class="nav-acoes-d">
+          <a class="nav-chat" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp aria-label="Falar no WhatsApp"><svg class="i"><use href="#i-chat"/></svg></a>
+          <a class="btn-wpp nav-btn" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp data-abrindo="Abrindo o WhatsApp"><span class="lbl">Entre em contato</span></a>
+        </div>
+        <div class="nav-acoes-m">
+          <a class="nav-circ nav-circ--wpp" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp aria-label="Falar no WhatsApp"><svg class="i"><use href="#i-chat"/></svg></a>
+          <button class="nav-circ nav-circ--menu" id="btnMenu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuM"><svg class="i"><use href="#i-menu"/></svg></button>
+        </div>
+      </nav>
+      <div class="menu-m" id="menuM" hidden>
+        <a href="#inicio" class="ativo">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+
+    <div class="hero-texto">
+      <h1 class="hero-h1">
+        <span class="l1">Hospital</span>
+        <span class="l2">Veterinário <span class="h24">24h</span></span>
+        <span class="l3">em São Caetano</span>
+      </h1>
+      <p class="hero-sub">Ethicus Hospital Veterinário, em São Caetano do Sul. A saúde do seu pet é nossa prioridade!</p>
+      <a class="btn-wpp hero-cta" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>
+        <span class="lbl">ATENDIMENTO IMEDIATO</span>
+        <svg class="i-wpp"><use href="#i-wpp"/></svg>
       </a>
-      <p class="hero-resposta">Clique no botão acima ⚡ Resposta em 2 minutos</p>
     </div>
+  </div>
+</header>
+
+<!-- HERO CARDS -->
+<div class="hero-cards">
+  <div class="hc rv" style="--d:.45s">
+    <div class="hc-txt"><span class="hc-n">#1</span><span class="hc-d"><span>Aberto 24 horas,</span> <span>todos os dias</span></span></div>
+    <span class="hc-ic"><svg class="i"><use href="#i-relogio"/></svg></span>
+  </div>
+  <div class="hc rv" style="--d:.55s">
+    <div class="hc-txt"><span class="hc-n">#2</span><span class="hc-d"><span>Mais de 30 anos</span> <span>de experiência</span></span></div>
+    <span class="hc-ic"><svg class="i"><use href="#i-esteto"/></svg></span>
+  </div>
+  <div class="hc rv" style="--d:.65s">
+    <div class="hc-txt"><span class="hc-n">#3</span><span class="hc-d"><span>Mais de 470</span> <span>avaliações positivas</span></span></div>
+    <span class="hc-ic"><svg class="i"><use href="#i-estrela"/></svg></span>
   </div>
 </div>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-marquee">
-    <div class="stats-track">
-      <div class="stat">
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Aberto todos os dias</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">+470</div>
-        <div class="stat-label">Avaliações Positivas</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">+30 anos</div>
-        <div class="stat-label">De experiência</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Aberto todos os dias</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+470</div>
-        <div class="stat-label">Avaliações Positivas</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+30 anos</div>
-        <div class="stat-label">De experiência</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Aberto todos os dias</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+470</div>
-        <div class="stat-label">Avaliações Positivas</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+30 anos</div>
-        <div class="stat-label">De experiência</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Aberto todos os dias</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+470</div>
-        <div class="stat-label">Avaliações Positivas</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+30 anos</div>
-        <div class="stat-label">De experiência</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Aberto todos os dias</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+470</div>
-        <div class="stat-label">Avaliações Positivas</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+30 anos</div>
-        <div class="stat-label">De experiência</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Aberto todos os dias</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+470</div>
-        <div class="stat-label">Avaliações Positivas</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+30 anos</div>
-        <div class="stat-label">De experiência</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Aberto todos os dias</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+470</div>
-        <div class="stat-label">Avaliações Positivas</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+30 anos</div>
-        <div class="stat-label">De experiência</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">24h</div>
-        <div class="stat-label">Aberto todos os dias</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+470</div>
-        <div class="stat-label">Avaliações Positivas</div>
-      </div>
-      <div class="stat" aria-hidden="true">
-        <div class="stat-num">+30 anos</div>
-        <div class="stat-label">De experiência</div>
-      </div>
+<!-- AVALIACOES -->
+<section class="sec-car sec-aval" id="avaliacoes" data-carrossel>
+  <div class="car-cab">
+    <div class="car-tag rv">avaliações reais</div>
+    <div class="car-dir">
+      <h2 class="car-h2 rv" style="--d:.08s"><span class="c">Depoimentos</span><span>reais</span></h2>
+      <p class="car-p rv" style="--d:.16s">São Caetano confia no Ethicus: o que dizem os tutores sobre o nosso atendimento, em avaliações reais do Google.</p>
     </div>
   </div>
-</div>
+  <div class="car-track">
+    <div class="av rv"><img src="img/avaliacao-1.webp" width="501" height="635" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" /></div>
+    <div class="av rv" style="--d:.08s"><img src="img/avaliacao-2.webp" width="501" height="635" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" /></div>
+    <div class="av rv" style="--d:.16s"><img src="img/avaliacao-3.webp" width="501" height="635" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" /></div>
+    <div class="av rv" style="--d:.24s"><img src="img/avaliacao-4.webp" width="501" height="635" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" /></div>
+    <div class="av rv" style="--d:.32s"><img src="img/avaliacao-5.webp" width="501" height="635" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" /></div>
+  </div>
+  <div class="car-prog"><span></span></div>
+</section>
 
-<!-- DEPOIMENTOS -->
-<div class="sec-depoi">
-  <div class="sec-depoi-inner">
-    <div class="sec-header">
-      <span class="sec-tag">Depoimentos reais</span>
-      <h2 class="sec-titulo depoi-titulo">São Caetano confia<br /> <span>no Ethicus.</span></h2>
-    </div>
-
-    <div class="carrossel-wrap">
-      <div class="carrossel-track" id="carrosselTrack">
-        <div class="carrossel-slide">
-          <div class="review-img-card">
-            <img src="1.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" width="501" height="635" />
-          </div>
-        </div>
-        <div class="carrossel-slide">
-          <div class="review-img-card">
-            <img src="2.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" width="501" height="635" />
-          </div>
-        </div>
-        <div class="carrossel-slide">
-          <div class="review-img-card">
-            <img src="3.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" width="501" height="635" />
-          </div>
-        </div>
-        <div class="carrossel-slide">
-          <div class="review-img-card">
-            <img src="4.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" width="501" height="635" />
-          </div>
-        </div>
-        <div class="carrossel-slide">
-          <div class="review-img-card">
-            <img src="5.webp" alt="Avaliação real de tutor no Google" loading="lazy" decoding="async" width="501" height="635" />
+<!-- DESTAQUES -->
+<section class="sec-dest">
+  <div class="dest-cab">
+    <span class="selo rv"><svg class="i"><use href="#i-tag"/></svg>O que fazemos</span>
+    <h2 class="dest-h2 rv" style="--d:.08s"><span>Atendimento rápido,</span><span>especializado e humanizado</span></h2>
+  </div>
+  <div class="dest-cards">
+    <article class="dc dc--grande dc--desc rv">
+      <img class="dc-img dc-img--cirurgia" src="img/destaque-cirurgia.webp" width="475" height="600" alt="Veterinário do Ethicus em procedimento cirúrgico" loading="lazy" decoding="async" />
+      <div class="dc-body">
+        <span class="dc-tag">Estrutura completa</span>
+        <div class="dc-main">
+          <h3><span>Cirurgias e</span><span>internação</span></h3>
+          <div class="dc-row">
+            <p>Do procedimento à recuperação, com a mesma equipe acompanhando de perto.</p>
+            <a class="dc-seta" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp aria-label="Saiba mais sobre cirurgias e internação pelo WhatsApp"><svg class="i"><use href="#i-seta"/></svg></a>
           </div>
         </div>
       </div>
-      <div class="carrossel-nav">
-        <button class="carrossel-btn" onclick="moverCarrossel(-1)" aria-label="Anterior">&#8592;</button>
-        <div class="carrossel-dots">
-          <div class="carrossel-dot ativo" onclick="irParaSlide(0)"></div>
-          <div class="carrossel-dot" onclick="irParaSlide(1)"></div>
-          <div class="carrossel-dot" onclick="irParaSlide(2)"></div>
-          <div class="carrossel-dot" onclick="irParaSlide(3)"></div>
-          <div class="carrossel-dot" onclick="irParaSlide(4)"></div>
-        </div>
-        <button class="carrossel-btn" onclick="moverCarrossel(1)" aria-label="Próximo">&#8594;</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SERVIÇOS -->
-<div style="background:#ECECEC; padding: 1px 0;">
-<div class="sec">
-  <div class="sec-header">
-    <span class="sec-tag">O que fazemos</span>
-    <h2 class="sec-titulo">Atendimento rápido e<br class="br-mob" /> especializado,<br class="br-desk" /> <span>a qualquer<br class="br-mob" /> hora do dia ou da noite</span></h2>
-    <p class="sec-sub">A equipe Ethicus está pronta para cuidar do seu companheiro com técnica avançada e estrutura completa.</p>
-  </div>
-  <div class="servicos-grid">
-    <div class="servico-card">
-      <div class="servico-icone">
-        <svg viewBox="0 0 24 24"><path d="M9 3h6a1 1 0 0 1 1 1v1H8V4a1 1 0 0 1 1-1z"/><path d="M8 5H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M12 10v6M9 13h6"/></svg>
-      </div>
-      <h3>Consulta Clínico Geral</h3>
-      <p>Avaliação completa do seu pet, com diagnóstico claro e cada conduta explicada.</p>
-    </div>
-    <div class="servico-card">
-      <div class="servico-icone">
-        <svg viewBox="0 0 24 24"><path d="M3 18V9a2 2 0 0 1 2-2h4v5h12v6"/><path d="M3 18h18M20 18v2M3 18v2"/><circle cx="6.5" cy="10" r="1.5"/></svg>
-      </div>
-      <h3>Cirurgias e Internação</h3>
-      <p>Do procedimento à recuperação, com a mesma equipe acompanhando de perto.</p>
-    </div>
-    <div class="servico-card">
-      <div class="servico-icone">
-        <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
-      </div>
-      <h3>Emergências</h3>
-      <p>Prontidão para agir nos momentos que mais importam, a qualquer hora.</p>
-    </div>
-    <div class="servico-card">
-      <div class="servico-icone">
-        <svg viewBox="0 0 24 24"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M7 12h2l2-3 2 6 2-3h2"/></svg>
-      </div>
-      <h3>Exames de Imagem</h3>
-      <p>Raio-x e ultrassom no local, sem transferir o seu pet para outro endereço.</p>
-    </div>
-    <div class="servico-card">
-      <div class="servico-icone">
-        <svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-8V3"/><path d="M7.5 14h9"/></svg>
-      </div>
-      <h3>Laboratório Próprio</h3>
-      <p>Resultados rápidos para decidir o tratamento sem tempo de espera.</p>
-    </div>
-    <div class="servico-card">
-      <div class="servico-icone">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
-      </div>
-      <h3>Tomografia e UTI</h3>
-      <p>Diagnóstico preciso e cuidado intensivo no mesmo lugar, sem transferências.</p>
-    </div>
-  </div>
-</div>
-</div>
-
-<!-- CTA -->
-<div class="sec-cta-wrap">
-  <div class="sec-cta">
-    <h2>Ethicus Hospital<br class="br-mob" /> Veterinário<br class="br-desk" /> <span>24h em<br class="br-mob" /> São Caetano do Sul.</span></h2>
-    <p class="sec-cta-texto">Qualquer hora do dia ou da madrugada, nossa equipe está de prontidão para atender com agilidade e dedicação. Fale com a gente agora ou venha até nós.</p>
-    <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="btn-wpp" style="max-width:420px;margin:0 auto;">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Atendimento Rápido Agora
-    </a>
-  </div>
-</div>
-
-<!-- GALERIA -->
-<div class="sec-galeria">
-  <div class="sec-galeria-inner">
-    <div class="sec-header">
-      <span class="sec-tag">Por dentro do Ethicus</span>
-      <h2 class="sec-titulo">Conheça nossa <span>estrutura</span></h2>
-    </div>
-
-    <div class="galeria-carrossel" id="galeriaCarrossel">
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto2.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto3.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto4.webp" alt="Atendimento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto6.webp" alt="Equipe do Ethicus cuidando de um pet" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto7.webp" alt="Bastidores do Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto8.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto9.webp" alt="Momento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item">
-        <img src="galeria/foto2.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item">
-        <img src="galeria/foto3.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" id="galeriaAncora">
-        <img src="galeria/foto4.webp" alt="Atendimento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item">
-        <img src="galeria/foto6.webp" alt="Equipe do Ethicus cuidando de um pet" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item">
-        <img src="galeria/foto7.webp" alt="Bastidores do Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item">
-        <img src="galeria/foto8.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item">
-        <img src="galeria/foto9.webp" alt="Momento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto2.webp" alt="Estrutura do Ethicus Hospital Veterinário 24h" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto3.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto4.webp" alt="Atendimento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto6.webp" alt="Equipe do Ethicus cuidando de um pet" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto7.webp" alt="Bastidores do Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto8.webp" alt="Equipe do Ethicus em atendimento" loading="lazy" decoding="async" />
-      </figure>
-      <figure class="galeria-item" aria-hidden="true">
-        <img src="galeria/foto9.webp" alt="Momento no Ethicus Hospital Veterinário" loading="lazy" decoding="async" />
-      </figure>
-    </div>
-
-    <div class="carrossel-nav">
-      <button class="carrossel-btn" onclick="moverGaleria(-1)" aria-label="Fotos anteriores">&#8592;</button>
-      <button class="carrossel-btn" onclick="moverGaleria(1)" aria-label="Próximas fotos">&#8594;</button>
-    </div>
-  </div>
-</div>
-
-<!-- LOCALIZAÇÃO -->
-<div class="sec-local">
-  <div class="sec-local-inner">
-    <div>
-      <span class="sec-tag">Nossa clínica</span>
-      <h2 class="sec-titulo" style="font-size:32px;"><span>Localização Privilegiada</span><br />São Caetano do Sul/SP</h2>
-      <div class="info-box">
-        <div class="info-linha">
-          <span class="ico">📍</span>
-          <div>
-            <strong>Endereço</strong>
-            Estrada das Lágrimas, 1843 · São Caetano do Sul/SP
-          </div>
-        </div>
-        <div class="info-linha">
-          <span class="ico">🕐</span>
-          <div>
-            <strong>Funcionamento</strong>
-            Aberto 24 horas, todos os dias
+    </article>
+    <article class="dc rv" style="--d:.1s">
+      <img class="dc-img dc-img--exames" src="img/destaque-exames.webp" width="800" height="1000" alt="Golden retriever e tutor no tomógrafo do Ethicus" loading="lazy" decoding="async" />
+      <div class="dc-body">
+        <span class="dc-tag">No mesmo lugar</span>
+        <div class="dc-main">
+          <h3><span>Exames</span><span>no local</span></h3>
+          <div class="dc-row">
+            <a class="dc-seta" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp aria-label="Saiba mais sobre os exames no local pelo WhatsApp"><svg class="i"><use href="#i-seta"/></svg></a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="mapa">
-      <iframe data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.838248305851!2d-46.574984400000005!3d-23.645963100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce434a1737c179%3A0x99367801cbc022e4!2sEthicus%20Hospital%20Veterin%C3%A1rio%2024%20Horas%20%7C%20S%C3%A3o%20Caetano%20do%20Sul!5e0!3m2!1spt-BR!2sbr!4v1786016270505!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Localização Ethicus Hospital Veterinário 24h"></iframe>
-    </div>
+    </article>
+    <article class="dc rv" style="--d:.2s">
+      <img class="dc-img dc-img--consultas" src="img/destaque-consultas.webp" width="765" height="1020" alt="Cão em exame de tomografia no Ethicus" loading="lazy" decoding="async" />
+      <div class="dc-body">
+        <span class="dc-tag">Tecnologia de ponta</span>
+        <div class="dc-main">
+          <h3><span>Tomografia</span><span>e UTI</span></h3>
+          <div class="dc-row">
+            <a class="dc-seta" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp aria-label="Saiba mais sobre tomografia e UTI pelo WhatsApp"><svg class="i"><use href="#i-seta"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </article>
   </div>
-</div>
+</section>
 
-<!-- FOOTER -->
-<footer>
-  <span class="footer-logo">Ethicus</span>
-  <div class="footer-texto">
-    <strong>Ethicus Hospital Veterinário 24h</strong> · São Caetano do Sul/SP<br />
-    Cuidado que não para. Para o pet que você ama. 🐾
+<!-- SERVICOS -->
+<section class="sec-serv" id="servicos">
+  <div class="serv-titulo">
+    <div class="serv-palco">
+      <div class="serv-gigante rv">serviços</div>
+      <span class="serv-pill p1">Tomografia</span>
+      <span class="serv-pill p2">UTI 24h</span>
+      <span class="serv-pill p3">Laboratório</span>
+      <span class="serv-pill p4">Ultrassom</span>
+    </div>
   </div>
-  <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="nav-btn">Atendimento Rápido Agora</a>
+  <p class="serv-sub rv"><span>Tudo que seu pet precisa, em um só lugar,</span> <span>a qualquer hora do dia ou da noite</span></p>
+  <div class="serv-lista" id="servLista">
+    <div class="sr rv">
+      <span class="sr-midia"><img style="object-position:50% 40%" src="img/etapa-2.webp" width="450" height="268" alt="Veterinária do Ethicus examinando um cão" loading="lazy" decoding="async" /></span>
+      <div class="sr-info">
+        <span class="sr-ic"><svg class="i"><use href="#i-esteto"/></svg></span>
+        <span class="sr-nome">Consultas</span>
+        <span class="sr-desc">Clínico geral com avaliação completa e cada conduta explicada.</span>
+      </div>
+      <a class="sr-btn" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>Saiba mais</a>
+    </div>
+    <div class="sr rv aberto padrao">
+      <span class="sr-midia"><img src="img/servico-emergencia.webp" width="560" height="471" alt="Cão em atendimento veterinário de emergência" loading="lazy" decoding="async" /></span>
+      <div class="sr-info">
+        <span class="sr-ic"><svg class="i"><use href="#i-raio"/></svg></span>
+        <span class="sr-nome">Emergência 24h</span>
+        <span class="sr-desc">Prontidão para agir nos momentos que mais importam, a qualquer hora.</span>
+      </div>
+      <a class="sr-btn" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>Saiba mais</a>
+    </div>
+    <div class="sr rv">
+      <span class="sr-midia"><img style="object-position:50% 30%" src="img/destaque-cirurgia.webp" width="475" height="600" alt="Veterinário do Ethicus em procedimento cirúrgico" loading="lazy" decoding="async" /></span>
+      <div class="sr-info">
+        <span class="sr-ic"><svg class="i"><use href="#i-cruz"/></svg></span>
+        <span class="sr-nome">Cirurgias</span>
+        <span class="sr-desc">Do procedimento à recuperação, com a mesma equipe por perto.</span>
+      </div>
+      <a class="sr-btn" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>Saiba mais</a>
+    </div>
+    <div class="sr rv">
+      <span class="sr-midia"><img style="object-position:50% 30%" src="img/etapa-4.webp" width="537" height="600" alt="Veterinária do Ethicus acompanhando um cão na internação" loading="lazy" decoding="async" /></span>
+      <div class="sr-info">
+        <span class="sr-ic"><svg class="i"><use href="#i-pulso"/></svg></span>
+        <span class="sr-nome">Internação e UTI</span>
+        <span class="sr-desc">Cuidado intensivo e internação no mesmo lugar, sem transferências.</span>
+      </div>
+      <a class="sr-btn" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>Saiba mais</a>
+    </div>
+    <div class="sr rv">
+      <span class="sr-midia"><img style="object-position:50% 58%" src="img/destaque-consultas.webp" width="765" height="1020" alt="Cão em exame de tomografia no Ethicus" loading="lazy" decoding="async" /></span>
+      <div class="sr-info">
+        <span class="sr-ic"><svg class="i"><use href="#i-frasco"/></svg></span>
+        <span class="sr-nome">Exames</span>
+        <span class="sr-desc">Tomografia, raio-x, ultrassom e laboratório próprio.</span>
+      </div>
+      <a class="sr-btn" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>Saiba mais</a>
+    </div>
+  </div>
+</section>
+
+<!-- CARDS CAES E GATOS -->
+<section class="sec-pets">
+  <article class="pc pc--caes rv">
+    <img class="pc-img" src="img/card-caes.webp" width="900" height="900" alt="Pug no colo da veterinária" loading="lazy" decoding="async" />
+    <span class="pc-gigante" aria-hidden="true">cães</span>
+    <div class="pc-vidro">
+      <span class="pc-tag"><svg class="i"><use href="#i-tag"/></svg>Atendimento humanizado</span>
+      <div class="pc-baixo">
+        <h3 class="pc-h3"><span>Cuidado carinhoso</span><span>e responsável</span></h3>
+        <a class="pc-mais" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>Saiba mais <svg class="i"><use href="#i-seta"/></svg></a>
+      </div>
+    </div>
+  </article>
+  <article class="pc pc--gatos rv" style="--d:.12s">
+    <img class="pc-img" src="img/card-gatos.webp" width="900" height="900" alt="Gato siamês" loading="lazy" decoding="async" />
+    <span class="pc-gigante" aria-hidden="true">gatos</span>
+    <div class="pc-vidro">
+      <span class="pc-tag"><svg class="i"><use href="#i-tag"/></svg>Estrutura hospitalar</span>
+      <div class="pc-baixo">
+        <h3 class="pc-h3"><span>Internação, cirurgias</span><span>e UTI em um só lugar</span></h3>
+        <a class="pc-mais" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>Saiba mais <svg class="i"><use href="#i-seta"/></svg></a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ETAPAS -->
+<section class="sec-car sec-etapas" data-carrossel>
+  <div class="car-cab">
+    <div class="car-tag rv">etapas</div>
+    <div class="car-dir">
+      <h2 class="car-h2 rv" style="--d:.08s"><span class="c">Como funciona</span><span>o atendimento no Ethicus</span></h2>
+      <p class="car-p rv" style="--d:.16s">Emergência, consulta, exames e internação no mesmo endereço, na Estrada das Lágrimas, em São Caetano do Sul.</p>
+    </div>
+  </div>
+  <div class="car-track">
+    <div class="et rv">
+      <div class="et-img"><img src="img/etapa-1.webp" width="450" height="268" alt="Equipe do Ethicus em atendimento de emergência" loading="lazy" decoding="async" /><span class="et-n">01</span></div>
+      <div class="et-txt"><h3>Atendimento imediato</h3><p>Fale pelo WhatsApp e tenha resposta em 2 minutos, a qualquer hora do dia ou da noite.</p></div>
+    </div>
+    <div class="et rv" style="--d:.08s">
+      <div class="et-img"><img src="img/etapa-2.webp" width="450" height="268" alt="Veterinária do Ethicus examinando um cão" loading="lazy" decoding="async" /><span class="et-n">02</span></div>
+      <div class="et-txt"><h3>Avaliação clínica</h3><p>Consulta com clínico geral, diagnóstico claro e cada conduta explicada para você decidir com segurança.</p></div>
+    </div>
+    <div class="et rv" style="--d:.16s">
+      <div class="et-img"><img src="img/etapa-3.webp" width="450" height="268" alt="Equipe do Ethicus fazendo ultrassom em um pet" loading="lazy" decoding="async" /><span class="et-n">03</span></div>
+      <div class="et-txt"><h3>Exames no local</h3><p>Tomografia, raio-x, ultrassom e laboratório próprio, sem transferir o seu pet.</p></div>
+    </div>
+    <div class="et rv" style="--d:.24s">
+      <div class="et-img"><img style="object-position:50% 40%" src="img/etapa-4.webp" width="537" height="600" alt="Veterinária do Ethicus acompanhando um cão na internação" loading="lazy" decoding="async" /><span class="et-n">04</span></div>
+      <div class="et-txt"><h3>Internação e UTI</h3><p>Cuidado intensivo e acompanhamento de perto até a recuperação do seu pet.</p></div>
+    </div>
+  </div>
+  <div class="car-prog"><span></span></div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="sec-cta" id="contato">
+  <div class="cta-card rv">
+    <div class="cta-mapa">
+      <iframe data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.838248305851!2d-46.574984400000005!3d-23.645963100000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce434a1737c179%3A0x99367801cbc022e4!2sEthicus%20Hospital%20Veterin%C3%A1rio%2024%20Horas%20%7C%20S%C3%A3o%20Caetano%20do%20Sul!5e0!3m2!1spt-BR!2sbr!4v1789151541588!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Mapa: Ethicus Hospital Veterinário 24 Horas em São Caetano do Sul"></iframe>
+    </div>
+    <div class="cta-tag">contato</div>
+    <div class="cta-conteudo">
+      <h2 class="cta-h2"><span>Emergência com seu pet?</span><span>Fale com a nossa equipe.</span></h2>
+      <p class="cta-p">Qualquer hora do dia ou da madrugada, nossa equipe está de prontidão para atender com agilidade e dedicação.</p>
+    </div>
+    <div class="cta-form">
+      <a class="cta-campo" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>Entre em contato pelo WhatsApp</a>
+      <a class="cta-campo" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>Atendimento disponível agora</a>
+      <a class="btn-wpp cta-btn" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>
+        <span class="lbl">ATENDIMENTO IMEDIATO</span>
+        <svg class="i-wpp"><use href="#i-wpp"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RODAPE -->
+<footer class="rodape">
+  <div class="rod-in">
+    <div class="rod-l1">
+      <div class="rod-logo">
+        <span class="ic"><img src="img/logo-96.webp" width="96" height="96" alt="" loading="lazy" /></span>
+        Ethicus.
+      </div>
+      <a class="rod-wpp" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp>
+        <b>WhatsApp 24h</b>
+        <span>Resposta em 2 minutos</span>
+      </a>
+    </div>
+    <div class="rod-l2">
+      <div class="rod-copy">
+        <span>© 2026 Ethicus Hospital Veterinário 24h. Estrada das Lágrimas, 1843, São Caetano do Sul/SP.</span>
+        <span class="only-d">Cuidado que não para. Para o pet que você ama.</span>
+      </div>
+      <a class="rod-chegar only-d" href="https://www.google.com/maps/dir/?api=1&amp;destination=Ethicus%20Hospital%20Veterin%C3%A1rio%2024%20Horas%2C%20Estrada%20das%20L%C3%A1grimas%2C%201843%2C%20S%C3%A3o%20Caetano%20do%20Sul%20SP" target="_blank" rel="noopener">Como chegar</a>
+    </div>
+  </div>
 </footer>
 
-<!-- CARD DE MENSAGEM -->
-<div class="card-msg" id="cardMsg">
-  <a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="card-msg-link">
-    <span class="card-msg-logo"><img src="logo.webp" alt="" width="40" height="40" decoding="async" /></span>
-    <span class="card-msg-corpo">
-      <span class="card-msg-nome">Ethicus <i class="card-msg-dot"></i></span>
-      <span class="card-msg-texto">Emergência com seu pet? Fale com nossa equipe agora mesmo!</span>
-    </span>
-  </a>
-  <button class="card-msg-fechar" id="cardMsgFechar" aria-label="Fechar mensagem">&times;</button>
-</div>
-
-<!-- BOTÃO FLUTUANTE -->
-<a href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." class="wpp-float" title="WhatsApp" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<!-- BOTAO FLUTUANTE -->
+<a class="btn-wpp wpp-float" href="https://wa.me/5511974455545?text=Ol%C3%A1%20encontrei%20voc%C3%AAs%20pelo%20Google%2C%20gostaria%20de%20atendimento." target="_blank" rel="noopener" data-wpp aria-label="Falar no WhatsApp">
+  <svg class="i-wpp"><use href="#i-wpp"/></svg>
 </a>
 
 <script>
-  /* Carrossel de Depoimentos */
-  var slideAtual = 0;
-  var totalSlides = document.querySelectorAll('.carrossel-slide').length;
-
-  function atualizarCarrossel() {
-    var track = document.getElementById('carrosselTrack');
-    var slideW = track.querySelector('.carrossel-slide').offsetWidth;
-    track.style.transform = 'translateX(-' + (slideAtual * slideW) + 'px)';
-    document.querySelectorAll('.carrossel-dot').forEach(function(d, i) {
-      d.classList.toggle('ativo', i === slideAtual);
+  /* Entrada dos itens conforme a rolagem */
+  (function () {
+    var itens = document.querySelectorAll('.rv');
+    itens.forEach(function (el) {
+      el.addEventListener('animationend', function (e) {
+        if (e.animationName === 'sobe') el.classList.add('ok');
+      });
     });
-  }
-
-  function moverCarrossel(dir) {
-    slideAtual = (slideAtual + dir + totalSlides) % totalSlides;
-    atualizarCarrossel();
-  }
-
-  function irParaSlide(i) {
-    slideAtual = i;
-    atualizarCarrossel();
-  }
-
-  var track = document.getElementById('carrosselTrack');
-
-  var touchStartX = 0;
-  track.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', function(e) {
-    var diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) moverCarrossel(diff > 0 ? 1 : -1);
-  });
-
-  var mouseStartX = 0, isDragging = false;
-  track.addEventListener('mousedown', function(e) { isDragging = true; mouseStartX = e.clientX; track.classList.add('dragging'); });
-  document.addEventListener('mouseup', function(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    track.classList.remove('dragging');
-    var diff = mouseStartX - e.clientX;
-    if (Math.abs(diff) > 40) moverCarrossel(diff > 0 ? 1 : -1);
-  });
-
-  setInterval(function() { moverCarrossel(1); }, 5000);
-  window.addEventListener('resize', atualizarCarrossel);
-
-  /* Rodapé fixo: entra quando o hero sai da tela */
-  var cardMsg = document.getElementById('cardMsg');
-  var heroEl = document.querySelector('.hero');
-  var flutuante = document.querySelector('.wpp-float');
-  if (cardMsg) {
-    /* o balão sai do botão flutuante 5 segundos depois de abrir a página */
-    setTimeout(function() { cardMsg.classList.add('visivel'); }, 5000);
-
-    var fechar = document.getElementById('cardMsgFechar');
-    if (fechar) fechar.addEventListener('click', function() { cardMsg.classList.add('fechado'); });
-  }
-
-  /* Galeria: carrossel com setas e arraste */
-  var galeriaEl = document.getElementById('galeriaCarrossel');
-
-  function moverGaleria(dir) {
-    if (!galeriaEl) return;
-    var item = galeriaEl.querySelector('.galeria-item');
-    if (!item) return;
-    var passo = item.getBoundingClientRect().width + parseFloat(getComputedStyle(galeriaEl).gap || 14);
-    galeriaEl.scrollBy({ left: dir * passo, behavior: 'smooth' });
-  }
-
-  function atualizarLeque() {
-    if (!galeriaEl) return;
-    var itens = galeriaEl.querySelectorAll('.galeria-item');
-    if (!window.matchMedia('(max-width: 900px)').matches) {
-      itens.forEach(function(it) { it.style.transform = ''; it.style.opacity = ''; it.style.zIndex = ''; });
+    if (!('IntersectionObserver' in window)) {
+      itens.forEach(function (el) { el.classList.add('vis'); });
       return;
     }
-    var caixa = galeriaEl.getBoundingClientRect();
-    var centro = caixa.left + caixa.width / 2;
-    itens.forEach(function(it) {
-      var r = it.getBoundingClientRect();
-      var dist = Math.abs((r.left + r.width / 2) - centro) / caixa.width;
-      var t = Math.min(dist * 2, 1);
-      it.style.transform = 'scale(' + (1 - 0.16 * t).toFixed(3) + ') translateY(' + (24 * t).toFixed(1) + 'px)';
-      it.style.opacity = (1 - 0.25 * t).toFixed(2);
-      it.style.zIndex = String(10 - Math.round(t * 10));
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var alvo = e.target;
+        /* nos carrosseis todos os cards entram juntos, mesmo os que estao fora da tela na lateral */
+        if (alvo.classList.contains('car-track')) {
+          alvo.querySelectorAll('.rv').forEach(function (c) { c.classList.add('vis'); });
+        } else {
+          alvo.classList.add('vis');
+        }
+        io.unobserve(alvo);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    itens.forEach(function (el) { if (!el.closest('.car-track')) io.observe(el); });
+    document.querySelectorAll('.car-track').forEach(function (t) { io.observe(t); });
+  })();
+
+  /* Carrosseis de avaliacoes e etapas: faixa infinita deslizando sem parar, com arraste e inercia */
+  document.querySelectorAll('[data-carrossel]').forEach(function (sec) {
+    var faixa = sec.querySelector('.car-track');
+    var barra = sec.querySelector('.car-prog span');
+    var reduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var comMouse = window.matchMedia('(hover: hover) and (pointer: fine)');
+    var originais = [].slice.call(faixa.children);
+    var n = originais.length;
+
+    var fita = document.createElement('div');
+    fita.className = 'car-fita';
+    originais.forEach(function (c) { fita.appendChild(c); });
+    faixa.appendChild(fita);
+
+    function clona(c) {
+      var k = c.cloneNode(true);
+      k.setAttribute('aria-hidden', 'true');
+      k.addEventListener('animationend', function (e) { if (e.animationName === 'sobe') k.classList.add('ok'); });
+      return k;
+    }
+    originais.forEach(function (c) { fita.insertBefore(clona(c), originais[0]); });
+    var copiasDepois = 0;
+
+    var s = 0, x = 0, fracao = 0.2;
+    function mede() {
+      var fase = s ? ((((-x - s) % s) + s) % s) / s : 0;
+      var gap = parseFloat(getComputedStyle(fita).columnGap) || 0;
+      s = (originais[0].getBoundingClientRect().width + gap) * n;
+      var precisa = Math.ceil(Math.max(window.innerWidth, 1440) / s) + 1;
+      while (copiasDepois < precisa) {
+        originais.forEach(function (c) { fita.appendChild(clona(c)); });
+        copiasDepois++;
+      }
+      fracao = barra.offsetWidth / barra.parentNode.offsetWidth;
+      x = -(s + fase * s);
+    }
+    function normaliza() {
+      while (x <= -2 * s) x += s;
+      while (x > -s) x -= s;
+    }
+    function desenha() {
+      fita.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0)';
+      var p = (-x - s) / s;
+      var pos = ((p + fracao / (1 + fracao)) % 1) * (1 + fracao) - fracao;
+      barra.style.transform = 'translate3d(' + (pos / fracao * 100).toFixed(3) + '%,0,0)';
+    }
+
+    var vel = 0, inercia = 0, retoma = 0, ultimo = 0;
+    var naTela = false, sobre = false, arrastando = false, rodando = false;
+    function cruzeiro() { return (window.innerWidth < 1024 ? 30 : 42) / 1000; } /* px por ms */
+    function quadro(t) {
+      var dt = ultimo ? Math.min(t - ultimo, 48) : 16;
+      ultimo = t;
+      if (!arrastando) {
+        if (inercia) {
+          x += inercia * dt;
+          inercia *= Math.pow(0.94, dt / 16.7);
+          if (Math.abs(inercia) < 0.02) inercia = 0;
+        } else {
+          var alvo = (reduzido || sobre || t < retoma) ? 0 : cruzeiro();
+          vel += (alvo - vel) * Math.min(1, dt / 400);
+          x -= vel * dt;
+        }
+        normaliza();
+        desenha();
+      }
+      if (naTela && !document.hidden) requestAnimationFrame(quadro);
+      else { rodando = false; ultimo = 0; }
+    }
+    function liga() {
+      if (rodando || !naTela || document.hidden) return;
+      rodando = true;
+      ultimo = 0;
+      requestAnimationFrame(quadro);
+    }
+
+    mede();
+    desenha();
+    window.addEventListener('resize', function () { mede(); normaliza(); desenha(); });
+
+    if ('IntersectionObserver' in window) {
+      var perto = new IntersectionObserver(function (es) {
+        if (!es[0].isIntersecting) return;
+        faixa.querySelectorAll('img[loading="lazy"]').forEach(function (img) { img.loading = 'eager'; });
+        perto.disconnect();
+      }, { rootMargin: '800px 0px' });
+      perto.observe(sec);
+      new IntersectionObserver(function (es) {
+        naTela = es[0].isIntersecting;
+        liga();
+      }, { rootMargin: '100px 0px' }).observe(faixa);
+    } else {
+      naTela = true;
+      liga();
+    }
+    document.addEventListener('visibilitychange', liga);
+
+    faixa.addEventListener('mouseenter', function () { if (comMouse.matches) sobre = true; });
+    faixa.addEventListener('mouseleave', function () { sobre = false; });
+
+    var xIni = 0, xBase = 0, amostras = [], moveu = false;
+    faixa.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      arrastando = true; moveu = false; inercia = 0; vel = 0;
+      xIni = e.clientX; xBase = x;
+      amostras = [{ t: e.timeStamp, x: e.clientX }];
+      faixa.classList.add('arrastando');
+      if (faixa.setPointerCapture) faixa.setPointerCapture(e.pointerId);
     });
-  }
-
-  var galeriaAncora = document.getElementById('galeriaAncora');
-
-  /* largura de um conjunto de fotos (são 3 conjuntos iguais no HTML) */
-  function larguraConjunto() {
-    return galeriaEl ? galeriaEl.scrollWidth / 3 : 0;
-  }
-
-  function irSemAnimar(destino) {
-    var antes = galeriaEl.style.scrollBehavior;
-    galeriaEl.style.scrollBehavior = 'auto';
-    galeriaEl.scrollLeft = destino;
-    galeriaEl.offsetHeight; /* força o reflow antes de devolver o smooth */
-    galeriaEl.style.scrollBehavior = antes || '';
-  }
-
-  /* deixa a foto principal centralizada no conjunto do meio */
-  function centralizarPrincipal() {
-    if (!galeriaEl || !galeriaAncora) return;
-    irSemAnimar(galeriaAncora.offsetLeft - (galeriaEl.clientWidth - galeriaAncora.offsetWidth) / 2);
-    atualizarLeque();
-  }
-
-  /* rolagem infinita: quando sai do conjunto do meio, volta para a posição equivalente */
-  function normalizarLoop() {
-    if (!galeriaEl) return;
-    var conjunto = larguraConjunto();
-    if (!conjunto) return;
-    if (galeriaEl.scrollLeft < conjunto * 0.5) irSemAnimar(galeriaEl.scrollLeft + conjunto);
-    else if (galeriaEl.scrollLeft > conjunto * 1.5) irSemAnimar(galeriaEl.scrollLeft - conjunto);
-  }
-
-  if (galeriaEl) {
-    var pedido = null, paradaLoop = null;
-    galeriaEl.addEventListener('scroll', function() {
-      if (!pedido) pedido = requestAnimationFrame(function() { pedido = null; atualizarLeque(); });
-      clearTimeout(paradaLoop);
-      paradaLoop = setTimeout(normalizarLoop, 160);
-    }, { passive: true });
-    window.addEventListener('resize', centralizarPrincipal);
-    window.addEventListener('load', centralizarPrincipal);
-    centralizarPrincipal();
-
-    var arrastando = false, inicioX = 0, inicioScroll = 0;
-    galeriaEl.addEventListener('mousedown', function(e) {
-      arrastando = true;
-      inicioX = e.clientX;
-      inicioScroll = galeriaEl.scrollLeft;
-      galeriaEl.classList.add('arrastando');
-    });
-    document.addEventListener('mousemove', function(e) {
+    faixa.addEventListener('pointermove', function (e) {
       if (!arrastando) return;
-      e.preventDefault();
-      galeriaEl.scrollLeft = inicioScroll - (e.clientX - inicioX);
+      var dx = e.clientX - xIni;
+      if (Math.abs(dx) > 5) moveu = true;
+      x = xBase + dx;
+      normaliza();
+      xBase = x - dx;
+      desenha();
+      amostras.push({ t: e.timeStamp, x: e.clientX });
+      if (amostras.length > 6) amostras.shift();
     });
-    document.addEventListener('mouseup', function() {
+    function solta() {
       if (!arrastando) return;
       arrastando = false;
-      galeriaEl.classList.remove('arrastando');
-    });
-  }
+      faixa.classList.remove('arrastando');
+      var a = amostras[0], b = amostras[amostras.length - 1], dt = b.t - a.t;
+      var parado = performance.now() - b.t > 90;
+      inercia = (!parado && dt > 0) ? Math.max(-2.5, Math.min(2.5, (b.x - a.x) / dt)) : 0;
+      retoma = performance.now() + 1400;
+      liga();
+    }
+    faixa.addEventListener('pointerup', solta);
+    faixa.addEventListener('pointercancel', solta);
+    faixa.addEventListener('click', function (e) {
+      if (moveu) { e.preventDefault(); e.stopPropagation(); moveu = false; }
+    }, true);
 
-  /* Galeria: mantém o bloco mesmo sem o arquivo na pasta */
-  document.querySelectorAll('.galeria-item img').forEach(function(img) {
-    img.addEventListener('error', function() { img.remove(); });
-    if (img.complete && img.naturalWidth === 0) img.remove();
+    faixa.addEventListener('wheel', function (e) {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      x -= e.deltaX; vel = 0; inercia = 0;
+      normaliza();
+      desenha();
+      retoma = performance.now() + 1400;
+    }, { passive: false });
   });
 
-  /* Faixa do hero: some enquanto a imagem não estiver na pasta */
-  var heroBanner = document.querySelector('.hero-banner');
-  if (heroBanner) {
-    var heroImg = heroBanner.querySelector('img');
-    heroImg.addEventListener('error', function() { heroBanner.style.display = 'none'; });
-    if (heroImg.complete && heroImg.naturalWidth === 0) heroBanner.style.display = 'none';
-  }
+  /* CTAs de WhatsApp: o texto vira "ABRINDO O WHATSAPP" e o WhatsApp abre logo em seguida */
+  document.querySelectorAll('[data-wpp]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var lbl = a.querySelector('.lbl');
+      if (!lbl) return;
+      e.preventDefault();
+      if (!lbl.dataset.orig) lbl.dataset.orig = lbl.textContent;
+      lbl.textContent = a.dataset.abrindo || 'ABRINDO O WHATSAPP';
+      a.classList.add('abrindo');
+      setTimeout(function () {
+        var w = window.open(a.href, '_blank');
+        if (w) w.opener = null; else location.href = a.href;
+      }, 450);
+      clearTimeout(a._volta);
+      a._volta = setTimeout(function () {
+        lbl.textContent = lbl.dataset.orig;
+        a.classList.remove('abrindo');
+      }, 4000);
+    });
+  });
 
-  /* Mapa: só carrega quando o usuário chega perto dele */
-  var mapaIframe = document.querySelector('.mapa iframe[data-src]');
-  if (mapaIframe) {
-    var carregarMapa = function() {
-      if (mapaIframe.src) return;
-      mapaIframe.src = mapaIframe.getAttribute('data-src');
-    };
-    if ('IntersectionObserver' in window) {
-      var mapaObs = new IntersectionObserver(function(entradas) {
-        if (entradas[0].isIntersecting) { carregarMapa(); mapaObs.disconnect(); }
-      }, { rootMargin: '400px' });
-      mapaObs.observe(mapaIframe);
-    } else {
-      window.addEventListener('load', carregarMapa);
-    }
-  }
+  /* Servicos: a linha em destaque da prancheta (Vacinacao) fica aberta em repouso;
+     com o mouse a foto acompanha a linha, no toque abre uma linha por vez */
+  (function () {
+    var lista = document.getElementById('servLista');
+    var linhas = lista.querySelectorAll('.sr');
+    var padrao = lista.querySelector('.sr.padrao');
+    var comMouse = window.matchMedia('(hover: hover) and (pointer: fine)');
+    function abre(sr) { linhas.forEach(function (l) { l.classList.toggle('aberto', l === sr); }); }
+    linhas.forEach(function (sr) {
+      sr.addEventListener('mouseenter', function () { if (comMouse.matches) abre(sr); });
+      sr.addEventListener('click', function (e) {
+        if (comMouse.matches || e.target.closest('.sr-btn')) return;
+        abre(sr.classList.contains('aberto') ? null : sr);
+      });
+    });
+    lista.addEventListener('mouseleave', function () { if (comMouse.matches) abre(padrao); });
+  })();
 
+  /* Mapa: o iframe do Google so carrega quando a dobra de contato se aproxima */
+  (function () {
+    var f = document.querySelector('.cta-mapa iframe');
+    if (!f) return;
+    function carrega() { if (!f.src) f.src = f.dataset.src; }
+    if (!('IntersectionObserver' in window)) { carrega(); return; }
+    var io = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { carrega(); io.disconnect(); }
+    }, { rootMargin: '600px 0px' });
+    io.observe(f);
+  })();
+
+  /* Botao flutuante: aparece quando o botao verde do hero sai da tela */
+  (function () {
+    var flutua = document.querySelector('.wpp-float');
+    var cta = document.querySelector('.hero-cta');
+    if (!flutua || !cta) return;
+    if (!('IntersectionObserver' in window)) { flutua.classList.add('visivel'); return; }
+    new IntersectionObserver(function (es) {
+      flutua.classList.toggle('visivel', !es[0].isIntersecting);
+    }).observe(cta);
+  })();
+
+  /* Menu mobile */
+  (function () {
+    var btn = document.getElementById('btnMenu');
+    var menu = document.getElementById('menuM');
+    btn.addEventListener('click', function () {
+      var abrir = menu.hidden;
+      menu.hidden = !abrir;
+      btn.setAttribute('aria-expanded', String(abrir));
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (!menu.hidden && !menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+
+  /* Navbar marca a dobra que esta na tela */
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var links = document.querySelectorAll('.nav-menu a, .menu-m a');
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (l) { l.classList.toggle('ativo', l.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['inicio', 'avaliacoes', 'servicos', 'contato'].forEach(function (id) {
+      var s = document.getElementById(id);
+      if (s) io.observe(s);
+    });
+  })();
 </script>
 </body>
 </html>
