@@ -36,7 +36,7 @@ Publicada em 11/09/2026 como página principal (o `index.html` da raiz, com `img
 | `etapa-4` internação | etapa 04 e linha "Internação e UTI" |
 | `etapa-2` consulta | etapa 02 e linha "Consultas" |
 
-- Fotos do template que continuam: `hero-cao-1100/1600` e `servico-emergencia` (a foto da linha "Emergência 24h", um cão deitado no asfalto)
+- Foto do template que continua: `hero-cao-1100/1600` (golden do hero). A foto antiga da linha "Emergência 24h" (cão deitado no asfalto) foi removida em 21/09/2026; a linha agora usa `etapa-1` (equipe atendendo um cão)
 - Os originais da Ethicus (logo, prints, galeria e serviços) ficam guardados fora do repositório, em `brand-assets/ethicus`
 
 Para trocar uma foto, salve com o mesmo nome e no mesmo formato; se mudar a proporção, ajuste `width`/`height` na tag `<img>`.
@@ -64,6 +64,10 @@ Toda a copy vem da página atual e do PDF de copy original da Ethicus. Adaptaç�
 - Lista de serviços com 5 linhas, como a prancheta, cobrindo os 6 serviços da página atual: Consultas, Emergência 24h (linha em destaque), Cirurgias, Internação e UTI, Exames (tomografia, raio-x, ultrassom e laboratório)
 - Cards cães/gatos: "Atendimento humanizado" e "Estrutura hospitalar", do PDF original
 - Contato: "Emergência com seu pet? Fale com a nossa equipe."
+
+## Ajustes pedidos depois da publicação (21/09/2026)
+- Sem os botões "Saiba mais" (lista de serviços e cards cães/gatos) e sem as setas dos cards de destaque
+- Cards cães e gatos: foto redonda com borda branca, etiqueta e título centralizados abaixo, sobre fundo verde suave, com a palavra gigante "cães"/"gatos" atrás da foto
 
 ## Fidelidade
 - Desktop: as dobras começam nas mesmas alturas da prancheta (Destaques 1679, Serviços 2434, Cards 3676, Etapas 4290, Contato 5052, Rodapé 5582; total 5.841 px contra 5.840)
