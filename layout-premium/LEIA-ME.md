@@ -2,7 +2,7 @@
 
 Recriação das pranchetas **Desktop V1** (1440 px) e **Mobile V1** (390 px) do arquivo
 "Landingpages Layout Premium" no Paper, com a copy da página anterior de ethicus.petvidaeamor.com.
-Publicada em 11/09/2026 como página principal (o `index.html` da raiz, com `img/` e `fonts/`). A página anterior continua no histórico do Git (commit 08ca91f); os arquivos dela na raiz (`1.webp`–`5.webp`, `logo.webp`, `bg-desktop.webp`, `bg-mobile.webp`, `galeria/` e `servicos/`) ficaram sem uso.
+Ficou no ar como página principal de 11/09 a 22/09/2026. Em 22/09/2026, a pedido do cliente, a raiz voltou para o layout padrão anterior e esta versão foi guardada aqui, em `layout-premium/`, com as próprias imagens (`img/`) e fontes (`fonts/`). Funciona sozinha: abra `layout-premium/index.html` por um servidor local ou acesse /layout-premium/ no site.
 
 ## Integrações
 - WhatsApp +55 11 97445-5545, mensagem "Olá encontrei vocês pelo Google, gostaria de atendimento." (o número nunca aparece na página)
