@@ -1,6 +1,5 @@
 {
   "redirects": [
-    { "source": "/layout-premium", "destination": "/", "permanent": false },
-    { "source": "/layout-premium/:path*", "destination": "/", "permanent": false }
+    { "source": "/layout-premium(.*)", "destination": "/", "permanent": false }
   ]
 }
